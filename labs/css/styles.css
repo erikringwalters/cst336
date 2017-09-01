@@ -14,12 +14,14 @@ btn{
 }
 nav{
     padding: 20px;
+    text-align: center;
 }
 nav a{
     font-size: 32px;
 }
 header{
     margin-top: 20px;
+    text-align: center;
 }
 img{
     padding: 30px;
@@ -72,4 +74,10 @@ td{
 }
 .name{
     color: ghostwhite;
+}
+iframe{
+margin: auto;
+}
+#content{
+    margin: auto;
 }
