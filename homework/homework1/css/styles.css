@@ -1,0 +1,69 @@
+body{
+    background-color: #3d3d3d;
+font-family: 'Orbitron', sans-serif;
+    color: #38f745;
+      margin: 50px;
+}
+h1{
+    text-align: center;
+}
+#graphic{
+    text-align: left;
+}
+hr{
+   display: block;
+    height: 4px;
+    border: 0;
+    border-top: 1px solid #000000;
+}
+footer{
+    float: inherit;
+    text-align: right;
+    color: #999999;
+ /*begin block: code below pulled from http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page*/
+    position:absolute;
+   bottom:0;
+   width:95%;
+   height:100px;   /* Height of the footer */
+   /*end block*/
+}
+img{
+       border-radius: 25px;
+       float: left;
+}
+iframe{
+     border-radius: 25px;
+     float: left;
+     margin-top: 30px;
+}
+#exp{
+    float: right;
+    width: 50%;
+}
+#vid{
+    float: right;
+}
+a{
+    color: #3ad7ff;
+    text-decoration: none;
+}
+a:hover{
+    color:#ffe105;
+}
+nav{
+    text-align:center;
+}
+#current{
+    border-bottom: solid #3ad7ff;
+}
+nav a{
+    font-size:24px;
+    margin:10px 0px 10px 10px;
+    padding: 8px 10px 8px 10px;
+    
+}
+nav a:hover{
+    border: 2px #3ad7ff solid;
+font-size: 2em;
+transition: 0.5s; /*transition effect*/
+}
