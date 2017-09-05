@@ -35,6 +35,7 @@ iframe{
      border-radius: 25px;
      float: left;
      margin-top: 30px;
+     height: 300px;
 }
 #exp{
     float: right;
@@ -71,4 +72,15 @@ transition: 0.5s; /*transition effect*/
 i{
     font-size:48px;
     color: #38f745;
+}
+.sources{
+    text-align:left;
+    float: left;
+    display: block;
+    position: absolute;
+    top: 520px;
+    
+}
+ol{
+       list-style-position: inside;
 }
