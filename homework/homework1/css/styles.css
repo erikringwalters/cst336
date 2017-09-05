@@ -24,7 +24,7 @@ footer{
     position:absolute;
    bottom:0;
    width:95%;
-   height:100px;   /* Height of the footer */
+   height:80px;   /* Height of the footer */
    /*end block*/
 }
 img{
@@ -66,4 +66,9 @@ nav a:hover{
     border: 2px #3ad7ff solid;
 font-size: 2em;
 transition: 0.5s; /*transition effect*/
+}
+
+i{
+    font-size:48px;
+    color: #38f745;
 }
