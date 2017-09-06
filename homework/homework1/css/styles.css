@@ -7,7 +7,7 @@ font-family: 'Orbitron', sans-serif;
 h1{
     text-align: center;
 }
-#graphic{
+.graphic{
     text-align: left;
 }
 hr{
@@ -21,11 +21,11 @@ footer{
     text-align: right;
     color: #999999;
  /*begin block: code below pulled from http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page*/
-    position:absolute;
-   bottom:0;
-   width:95%;
-   height:80px;   /* Height of the footer */
+    bottom: 0;
+    right: 0;   width:95%;
+   height:50px;   /* Height of the footer */
    /*end block*/
+   position: absolute;
 }
 img{
        border-radius: 25px;
@@ -37,7 +37,7 @@ iframe{
      margin-top: 30px;
      height: 300px;
 }
-#exp{
+.exp{
     float: right;
     width: 50%;
 }
@@ -75,10 +75,11 @@ i{
 }
 .sources{
     text-align:left;
-    float: left;
-    display: block;
-    position: absolute;
-    top: 520px;
+    float: right;
+    /*display: block;*/
+    position: relative;
+    width: 50%;
+    /*padding: 10px;*/
     
 }
 ol{
@@ -86,4 +87,7 @@ ol{
 }
 p{
     font-size:18px;
+}
+h3{
+    margin-left:10px;
 }
