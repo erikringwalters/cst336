@@ -7,13 +7,26 @@
     <body>
         
         <?php
-        $symbol7 = "seven";
         
-        echo "<img src='img/$symbol7.png' alt='$symbol7' title='$symbol7' width='70' />";
+        $randomValue = rand(0,3);
+        
+        switch($randomValue)
+        {
+            case 0: $symbol = "seven";
+            break;
+            case 1: $symbol = "lemon";
+            break;
+            case 2: $symbol = "grapes";
+            break;
+            case 3: $symbol = "orange";
+            break;
+        }
+        
+        echo "<img src='img/$symbol.png' alt='$symbol' title='$symbol' width='70' />";
         
         ?>
-        <img src="img/cherry.png" alt="Cherry" title="Cherry" width="70" />
-        <img src="img/lemon.png" alt="Lemon" title="Lemon" width="70"/>
-        <img src="img/.png" alt="" title="" width="70"/>
+        <!--<img src="img/cherry.png" alt="Cherry" title="Cherry" width="70" />-->
+        <!--<img src="img/lemon.png" alt="Lemon" title="Lemon" width="70"/>-->
+        <!--<img src="img/.png" alt="" title="" width="70"/>-->
     </body>
 </html>
