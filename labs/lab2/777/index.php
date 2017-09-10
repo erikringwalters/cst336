@@ -15,10 +15,11 @@
     <body>
         <div id="main">
         <?php play() ?>
-        
+              
+
         <form>
-            <input type="submit" value="Spin!">
+            <input id="spin" type="submit" value="Spin!">
         </form>
-        </div>
+          </div>
     </body>
 </html>
