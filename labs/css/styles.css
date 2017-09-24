@@ -1,0 +1,83 @@
+body{
+    background-color: #96897F;
+    font-family: 'Baloo Bhaijaan', cursive;
+}
+img{
+    border: red;
+}
+a{
+    color:#91e0da;
+}
+btn{
+    color: #f9d5e5;
+    margin: 30px;
+}
+nav{
+    padding: 20px;
+    text-align: center;
+}
+nav a{
+    font-size: 32px;
+}
+header{
+    margin-top: 20px;
+    text-align: center;
+}
+img{
+    padding: 30px;
+}
+.btn-primary {
+  color: #f9d5e5;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+footer{
+    text-align: right;
+    color:#CCCCCC;
+}
+nav a:hover { /*pseudo class*/
+border: 2px #91e0da solid;
+font-size: 2em;
+transition: 0.5s; /*transition effect*/
+color: #c1dbb6;
+}
+welcome_content div {
+  float: left;
+}
+a:hover {
+color: #c1dbb6;
+}
+.hobby{
+    color: ghostwhite;
+    font-weight: bold;
+}
+ul{
+    text-align: left;
+}
+.table-row{
+    background-color: #91e0da;
+}
+table{
+    margin: 0px auto;
+    padding-top: 15px;
+}
+td{
+    padding-right: 10px;
+    font-size: 1.3em;
+    border: 2px solid;
+    border-color: #96897F;
+    text-align: center;
+}
+#table-header{
+    background-color: #c1dbb6;
+    text-align: center;
+}
+.name{
+    color: ghostwhite;
+}
+iframe{
+margin: auto;
+}
+#content{
+    margin: auto;
+}

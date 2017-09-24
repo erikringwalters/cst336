@@ -1,0 +1,67 @@
+<<<<<<< HEAD
+     @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina');
+=======
+    @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaina');
+>>>>>>> 0ca0e6be8fbcf033a45b9247203201f95d9466af
+
+    img {
+        border-radius:20px;
+    }
+    
+    body {
+        background-color: black;
+        color: white;
+        font-family:"Baloo Bhaina";        
+    }
+
+    
+    #reel1, #reel2{
+        top:248px;
+        position:absolute;
+    }
+    
+    #reel1{
+        left:145px;
+    }
+    #reel2{
+        left:252px;
+    }
+    #win{
+        text-align: center;
+    }
+    #move{
+        text-align: center;
+    }
+<<<<<<< HEAD
+    
+    h1,h2
+    {
+=======
+    h1,h2{
+>>>>>>> 0ca0e6be8fbcf033a45b9247203201f95d9466af
+        text-align: center;
+    }
+<<<<<<< HEAD
+   
+<<<<<<< HEAD
+ 
+ player
+ {
+     float: left;
+ }
+ work
+ {
+     text-align: center;
+ }
+=======
+=======
+   h3{
+       display: inline;
+       margin: 65px;
+   }
+>>>>>>> 4a88f2fa16d3592af6d140a24d88aa78c42418d3
+   table{
+       text-align: center;
+   }
+ 
+>>>>>>> 0ca0e6be8fbcf033a45b9247203201f95d9466af
