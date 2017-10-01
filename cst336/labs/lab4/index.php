@@ -37,17 +37,17 @@
             <br/> <br/>
            <form>
               <div class="orientation row">
-                <input type="text" name="keyword" placeholder="keyword" value="<?=$_GET['keyword']?>"/>
-                <container class="radio">
-                <span id="horizontal">
-                <input type= "radio" id= "lhorizontal" name="layout" value = "horizontal">
+                <input id= "textInput" type="text" name="keyword" placeholder="keyword" value="<?=$_GET['keyword']?>"/>
+                <div class="radio">
+                <!--<span id="horizontal">-->
+                <input class="but" type= "radio" id= "lhorizontal" name="layout" value = "horizontal">
                 <label for="Horizontal"></label><label for="lhorizontal"> Horizontal </label>
-                </span>
-                <span id="vertical">
-                <input type="radio" id="lvertical" name="layout" value="vertical">
+                <!--</span>-->
+                <!--<span id="vertical">-->
+                <input class="but" type="radio" id="lvertical" name="layout" value="vertical">
                 <label for="Vertical"></label> <label for="lvertical"> Vertical </label>
-                </span>
-                </container>
+                <!--</span>-->
+                </div>
                 </div>
                 <br/> <br/>
                 <select name= "category">
@@ -66,7 +66,7 @@
             <br/>
             <?php
             if(!isset($imageURLs)) {
-                echo "<h2> Type a keyword to display a slideshow <br/> with random images from Pixabay.com </h2>";
+                echo "<h2 id='info'> Type a keyword to display a slideshow <br/> with random images from Pixabay.com </h2>";
             } else {
                  if($keyword == "")
                 {

@@ -1,16 +1,19 @@
     body{
         opacity:0.9;
         width:100%;
-        text-align:center;
+        text-align: center;
         color:black;
         background-size: 100%, 100%;
         background-attachment: fixed;
     }
     
-    input {
+    #textInput {
         font-size: 3em;
         color: black;
         border-radius: 10%;
+        margin: 0 !important;
+        padding: 0 !important;
+     
         
     }
     
@@ -23,17 +26,20 @@
         /*background-color: white;*/
         /*display: block;*/
         
+        
     }
     .radio{
-        display: block;
         background-color: white;
-        /*position: absolute;*/
-        right: 300px;
         font-size: large;
-        border-radius: 20px 5px 20px 5px;
+        border-radius: 20px;
+           display: inline-block;
+        /*margin: auto;*/
+        /*width: 20%;*/
+        /*float: right;*/
     }
     #submit{
-        border-radius: 50%;
+        border-radius: 25px;
+        font-size: xx-large;
     }
     select{
         font-size: xx-large;
@@ -47,6 +53,18 @@
     /*    top: 75px;*/
     /*}*/
     
-    #err{
+    #err, #info{
         background: white;
+        padding: 10px;
+    }
+    .radio label{
+        /*margin: 10px;*/
+        /*padding: 10px;*/
+        /*border: 10px;*/
+            padding-right: 10px;
+    }
+    .but {
+        position: inherit ;
+        margin-left: 20px !important;
+        
     }
