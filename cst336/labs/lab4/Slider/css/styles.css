@@ -3,11 +3,15 @@
         width:100%;
         text-align:center;
         color:black;
+        background-size: 100%, 100%;
+        background-attachment: fixed;
     }
     
     input {
         font-size: 3em;
         color: black;
+        border-radius: 10%;
+        
     }
     
     #carousel-example-generic {
@@ -16,5 +20,33 @@
     }
     
     .orientation{
+        /*background-color: white;*/
+        /*display: block;*/
+        
+    }
+    .radio{
+        display: block;
         background-color: white;
+        /*position: absolute;*/
+        right: 300px;
+        font-size: large;
+        border-radius: 20px 5px 20px 5px;
+    }
+    #submit{
+        border-radius: 50%;
+    }
+    select{
+        font-size: xx-large;
+    }
+    /*#vertical{*/
+    /*    position: absolute;*/
+    /*    top: 100px;*/
+    /*}*/
+    /*#horizontal{*/
+    /*    position: absolute;*/
+    /*    top: 75px;*/
+    /*}*/
+    
+    #err{
+        background: white;
     }

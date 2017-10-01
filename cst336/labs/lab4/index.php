@@ -4,11 +4,13 @@
             //API call goes here
             if(isset($_GET['keyword'])) 
             {
+              
                 // echo "You searched for: " . $_GET['keyword'];
                include 'Slider/api/pixabayAPI.php';
                 $keyword = $_GET['keyword'];
                 $imageURLs = getImageURLs($keyword);
                 $backgroundImage = $imageURLs[array_rand($imageURLs)];
+                
             }
             ?>
 <!Doctype html>
@@ -34,40 +36,53 @@
             
             <br/> <br/>
            <form>
-              <div class="orientation">
+              <div class="orientation row">
                 <input type="text" name="keyword" placeholder="keyword" value="<?=$_GET['keyword']?>"/>
+                <container class="radio">
+                <span id="horizontal">
                 <input type= "radio" id= "lhorizontal" name="layout" value = "horizontal">
                 <label for="Horizontal"></label><label for="lhorizontal"> Horizontal </label>
+                </span>
+                <span id="vertical">
                 <input type="radio" id="lvertical" name="layout" value="vertical">
                 <label for="Vertical"></label> <label for="lvertical"> Vertical </label>
+                </span>
+                </container>
                 </div>
-                
+                <br/> <br/>
                 <select name= "category">
-                    <option value = "">Select One</option>
+                    <option value = "">-Select One-</option>
                     <option value="ocean">Sea</option>
                     <option>Forest</option>
                     <option>Mountain</option>
                     <option>Snow</option>
                 </select>
-                <input type="submit" value="Submit" />
+                </br>
+                </br>
+                <input id="submit" type="submit" value="Submit" />
             </form>
         
        
-            <br>
+            <br/>
             <?php
             if(!isset($imageURLs)) {
                 echo "<h2> Type a keyword to display a slideshow <br/> with random images from Pixabay.com </h2>";
             } else {
-                ?>
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                     <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <?php
+                 if($keyword == "")
+                {
+                    echo "<h2 id='err'> You must type a keyword or select a category. </h2>"; 
+                }else{
+                
+               echo " <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>";
+                    //  <!-- Indicators -->
+                echo "<ol class='carousel-indicators'>";
+                    
                     for($i = 0; $i < 7; $i++) {
                         echo "<li data-target='#carousel-example-generic' data-slide-to='$i'";
                         echo ($i == 0)?" class='active'" : "";
                         echo "></li>";
                     }
+                
                ?>
                 </ol>
            
@@ -88,6 +103,7 @@
                         echo '</div>';
                         unset($imageURLs[$randomIndex]);
                 }
+                
                 ?>
                 </div>
                 
@@ -104,13 +120,14 @@
                 </div>
                      <?php 
             }//end of else statement
+            }//end of err else statement
             ?>
                <br>
                
      
          
               
-               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
