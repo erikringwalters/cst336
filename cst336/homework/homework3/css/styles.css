@@ -54,3 +54,7 @@ hr{
 .err{
     color: orange;
 }
+
+#buddyVerified{
+    float: right;
+}

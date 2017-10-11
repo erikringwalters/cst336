@@ -1,11 +1,5 @@
 <?php
-// $answers = array (
-// array("bowtie",0),
-// array("linguini",0),
-// array("spaghetti",0),
-// array("pene",0),
-// array("spiral",0),
-//  )
+$errMsg = "* Required Field";
 ?>
 <head>
     <title>Pasta Quiz!</title>
@@ -29,15 +23,26 @@
     <h2>Take the quiz to find out which pasta noodle you are!</h2>
     
     
-     <form target="_blank" action="result.php" method="post" id="quiz">
-      
-    Please enter your name: <input class="textInput" type="text" name="uname"></input>
+     <form action="result.php" method="post" id="quiz">
+      <!--target="_blank"-->
+           <?php if(!isset($_POST['uname'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
+   <label for="uname">Please enter your name:</label>  <input class="textInput" type="text" name="uname" value=''>
+    
+    
    
     <h3>
         Q1: A stranger drops their bag and all their papers fall out. what is 
         your reaction?
     </h3>
-    
+       <?php if(!isset($_POST['q1'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
          <div class="radio">
          <input class="bowtie" type= "radio"  name="q1" value = "bowtie"><label for="bowtie">Help them pick it up.</label></input><br/>
          <input class="linguini" type= "radio"  name="q1" value = "linguini"><label for="linguini">Use this time to get their number and ask them out on a date.</label></input><br/>
@@ -47,12 +52,17 @@
          <input class="pene" type= "radio"  name="q1" value = "pene"><label for="pene">Call 911.</label></input><br/>
          <input class="spiral" type= "radio"  name="q1" value = "spiral"><label for="spiral">Laugh with them, but not at them, then buy them coffee for their 
         hardships.</label></input><br/>
+     
          </div>
     
     <h3>
         Q2: A friend invites you to go skydiving. You do you respond?
     </h3>
-    
+         <?php if(!isset($_POST['q2'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
     
         <div class="radio">
          <input class="bowtie" type= "radio"  name="q2" value = "bowtie"><label for="bowtie">Excitedly accept the offer.</label></input><br/>
@@ -68,7 +78,11 @@
     <h3>
         Q3: Someone walks by you and calls you a dweeb. How do you react?
     </h3>
-    
+         <?php if(!isset($_POST['q3'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
         <div class="radio">
 
          <input class="bowtie" type= "radio"  name="q3" value = "bowtie"><label for="bowtie">Tell them to have a good day and express your hope that their 
@@ -86,7 +100,11 @@
      <h3>
         Q4: You find a wallet ont a restaurant floor. How do you handle it?
     </h3>
-    
+         <?php if(!isset($_POST['q4'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
         <div class="radio">
          <input class="bowtie" type= "radio"  name="q4" value = "bowtie"><label for="bowtie">Bring it to the manager and make sure it's in good hands before you 
         leave.</label></input><br/>
@@ -103,7 +121,11 @@
      <h3>
         Q5: A friend offers you Xxtra Flamin' Hot Cheetos. What do you do?
     </h3>
-    
+         <?php if(!isset($_POST['q5'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
         <div class="radio">
          <input class="bowtie" type= "radio"  name="q5" value = "bowtie"><label for="bowtie">Politely accept a few and enjoy the flavor.</label></input><br/>
          <input class="linguini" type= "radio"  name="q5" value = "linguini"><label for="linguini">Rudely inform him of how bad they are for them and how immoral the 
@@ -120,7 +142,11 @@
     
     <h3>Q6: You have to pick your child up from daycare, but are in the middle of 
     an important project at work. What do you do?</h3>
-    
+         <?php if(!isset($_POST['q6'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
         <div class="radio">
 
          <input class="bowtie" type= "radio"  name="q6" value = "bowtie"><label for="bowtie">Inform your boss and make the decision based on their understanding.</label></input><br/>
@@ -134,7 +160,11 @@
     
     
      <h3>Q7: An alien asks you to take him to your leader. How do you react?</h3>
-    
+         <?php if(!isset($_POST['q7'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
         <div class="radio">
 
          <input class="bowtie" type= "radio"  name="q7" value = "bowtie"><label for="bowtie">Give him accurate directions to your boss and ask if there's any 
@@ -150,7 +180,11 @@
     
     
      <h3>Q8: Your friend trips on a skateboard. How do you handle it?</h3>
-    
+         <?php if(!isset($_POST['q8'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
         <div class="radio">
 
          <input class="bowtie" type= "radio"  name="q8" value = "bowtie"><label for="bowtie">You whip out your Neosporin and kiss any boo-boos better, then write a 
@@ -164,7 +198,11 @@
     
     
     <h3>Q9: You failed an exam that you studied hours for.</h3>
-    
+         <?php if(!isset($_POST['q9'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+          else{echo"";}
+
+    ?>
         <div class="radio">
 
          <input class="bowtie" type= "radio"  name="q9" value = "bowtie"><label for="bowtie">Accept your defeat, make a note to study better next time, and make 
@@ -180,8 +218,12 @@
     
 
     <h3>Q10: How many punches can you take to the throat?</h3>
+         <?php if(!isset($_POST['q10'])){ 
+     echo "<p class='err'>".$errMsg."</p>";}
+     else{echo"";}
+    ?>
     <!--Number thing goes here. -->
-    <input id="punches" class="textInput" type="number" name="q10"></input>
+    <input id="punches" class="textInput" type="number" name="q10" value='0'><label for="q10"></label>
     <br/><br/><br/>
     <center>
 
@@ -191,4 +233,7 @@
     </div>
     </div>
     <div class="col-md-2"></div>
+     <!--/*BEGIN Added by Joel Casillas 10/11/2017*/-->
+     <img id="buddyVerified" src="img/buddy_verified.png" alt="Buddy verified"/>
+        <!--/*END Added by Joel Casillas 10/11/2017*/-->
 </body>
