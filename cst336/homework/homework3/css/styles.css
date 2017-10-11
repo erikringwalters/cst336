@@ -12,3 +12,14 @@ background-image{
 {
     background-color: #fce5a1;
 }
+#pad{
+    padding: 50px;
+}
+input{
+    font-size: 32px;
+}
+h3{
+    background-color: tan;
+    padding: 10px;
+    border-radius: 5px;
+}
