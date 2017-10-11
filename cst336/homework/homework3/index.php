@@ -10,7 +10,7 @@
 <head>
     <title>Pasta Quiz!</title>
     <link href="css/styles.css" type="text/css" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/x-icon" href="img/bowtie.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="img/bowtieIcon.png"/>
     
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" 
@@ -27,8 +27,12 @@
     <h1> Pasta Quiz! </h1>
     <hr/>
     <h2>Take the quiz to find out which pasta noodle you are!</h2>
-    Please enter your name: <input type="text" name="name"></input>
-    <form action="result.php">
+    
+    
+     <form target="_blank" action="result.php" method="post" id="quiz">
+      
+    Please enter your name: <input class="textInput" type="text" name="name"></input>
+   
     <h3>
         Q1: A stranger drops their bag and all their papers fall out. what is 
         your reaction?
@@ -75,7 +79,7 @@
         martial art you've been practicing.</input><br/>
          <input class="pene" type= "radio"  name="q3" value = "pene">Cry.</input><br/>
          <input class="spiral" type= "radio"  name="q3" value = "spiral">Repress until you get home to your dog then project your emotions
-        by calling him/her a dweeb</input><br/>
+        by calling him/her a dweeb.</input><br/>
          </div>
         
     </ul>
@@ -177,10 +181,10 @@
     
     <h3>Q10: How many punches can you take to the throat?</h3>
     <!--Number thing goes here. -->
-    <input type="number" name="q10"></input>
+    <input id="punches" class="textInput" type="number" name="q10"></input>
     <br/><br/><br/>
     <center>
-    <input id="submit" type="submit" class="btn btn-default">
+    <input id="submit" type="submit" class="btn btn-default" name="Submit">
     </form>
     </center>
     </div>

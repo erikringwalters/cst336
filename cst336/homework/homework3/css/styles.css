@@ -36,3 +36,18 @@ hr{
     text-align: center;
     font-size: 32px;
 }
+#resultPic{
+    text-align: center;
+}
+
+#rContent{
+    background-color: #fce5a1;
+  height: 100%;   
+}
+#message{
+    font-size: 24px;
+    text-align: center;
+}
+.textInput{
+    background-color: #ffefd5;
+}
