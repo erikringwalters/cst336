@@ -4,6 +4,8 @@ body{
     /*border-image: url("../img/pasta-background.jpg") 30 round;*/
     background-size: 100%, 100%;
     color: #042e72;
+    font-family: 'Raleway', sans-serif !important;
+    font-size: 18px !important;
 }
 background-image{
     opacity: 0.2;
@@ -16,10 +18,21 @@ background-image{
     padding: 50px;
 }
 input{
-    font-size: 32px;
+    font-size: 24px;
 }
 h3{
     background-color: tan;
     padding: 10px;
     border-radius: 5px;
+}
+input{
+    /*border-radius: 2px;*/
+}
+hr{
+    color: tan;
+    display: block;
+}
+#submit{
+    text-align: center;
+    font-size: 32px;
 }
