@@ -1,0 +1,14 @@
+body{
+    background-color: tan;
+    background-image: url("../img/pasta-background.jpg");
+    /*border-image: url("../img/pasta-background.jpg") 30 round;*/
+    background-size: 100%, 100%;
+    color: #042e72;
+}
+background-image{
+    opacity: 0.2;
+}
+#content
+{
+    background-color: #fce5a1;
+}
