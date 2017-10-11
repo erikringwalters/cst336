@@ -1,4 +1,3 @@
-
 <head>
 <title>Pasta Results!</title>
 <link href="css/styles.css" type="text/css" rel="stylesheet"/>
@@ -24,7 +23,6 @@
     //$name = $name . "!";
 $bowtie = $linguini = $spaghetti = $pene = $spiral = 0;
 $question = 'q';
-
  for($i = 0; $i < 9; $i++)
 {
     $question = 'q'.$i;

@@ -28,7 +28,6 @@ $errMsg = "* Required Field";
            <?php if(!isset($_POST['uname'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
    <label for="uname">Please enter your name:</label>  <input class="textInput" type="text" name="uname" value=''>
     
@@ -41,7 +40,6 @@ $errMsg = "* Required Field";
        <?php if(!isset($_POST['q1'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
          <div class="radio">
          <input class="bowtie" type= "radio"  name="q1" value = "bowtie"><label for="bowtie">Help them pick it up.</label></input><br/>
@@ -61,7 +59,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q2'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
     
         <div class="radio">
@@ -81,7 +78,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q3'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
         <div class="radio">
 
@@ -103,7 +99,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q4'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
         <div class="radio">
          <input class="bowtie" type= "radio"  name="q4" value = "bowtie"><label for="bowtie">Bring it to the manager and make sure it's in good hands before you 
@@ -124,7 +119,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q5'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
         <div class="radio">
          <input class="bowtie" type= "radio"  name="q5" value = "bowtie"><label for="bowtie">Politely accept a few and enjoy the flavor.</label></input><br/>
@@ -145,7 +139,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q6'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
         <div class="radio">
 
@@ -163,7 +156,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q7'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
         <div class="radio">
 
@@ -183,7 +175,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q8'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
         <div class="radio">
 
@@ -201,7 +192,6 @@ $errMsg = "* Required Field";
          <?php if(!isset($_POST['q9'])){ 
      echo "<p class='err'>".$errMsg."</p>";}
           else{echo"";}
-
     ?>
         <div class="radio">
 
