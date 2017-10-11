@@ -49,5 +49,8 @@ hr{
     text-align: center;
 }
 .textInput{
-    background-color: #ffefd5;
+    background-color: #fff5c6;
+}
+.err{
+    color: orange;
 }

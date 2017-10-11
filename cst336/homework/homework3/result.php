@@ -17,6 +17,8 @@
     <div id="rContent" class="col-md-8">
         <div id="pad">
     <?php
+    $name = $POST_['uname'];
+    //$name = $name . "!";
 $bowtie = $linguini = $spaghetti = $pene = $spiral = 0;
 $question = 'q';
 
@@ -76,7 +78,7 @@ $question = 'q';
         $msg = "Congratulations! You're a weird person!";
     }
     ?>
-         <h3>You're a <?php echo "$max"?> noodle!</h3>
+         <h3><?php echo "$name"?>You're a <?php echo "$max"?> noodle!</h3>
     <center>
     <?php
     echo "<img id='resultPic' src='img/".$max.".png'>";
