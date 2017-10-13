@@ -1,26 +1,29 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'tcp';
-$username = "root";
-$password = "";
-//create db connection
-$dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+?>
+<?php
+
+include '../../../dbConnection.php';
+$conn = getDatabaseConnection();
 
 $dbConn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-function usersWithanA(){
-$sql = "SELECT * FROM tc_user WHERE firstName LIKE 'A%'";
+function getDeviceTypes(){
+    global $dbConn;
+    
+    $sql = "SELECT DISTINCT(deviceType) 
+    FROM 'tc_device'
+    ORDER BY deviceType";
 
-$stmt = $dbConn->prepare($sql);
-$stmt->execute();
-$records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $dbConn->prepare($sql);
+    $stmt->execute();
+    $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 //print_r($records);
 
 foreach ($records as $record) {
-    echo $record['firstName'] . " " . $record['lastName'] . " " . $record['email'] . "<br/>";
+    echo "<option> ".$record['firstName'] . " " . $record['deviceType'] . "</option>";
 
 }
 }
