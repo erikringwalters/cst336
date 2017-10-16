@@ -75,7 +75,7 @@ function displayDevices(){
         
         echo  $record['deviceName'] . " " . $record['deviceType'] . " " .
               $record['price'] .  "  " . $record['status'] . 
-              "<a href='checkoutHistory.php?deviceId='> Checkout History </a> <br />";
+              "<a target='checkoutHistory' href='checkoutHistory.php?deviceId=".$record['deviceId']."'> Checkout History </a> <br />";
         
     }
 }
@@ -86,6 +86,7 @@ function displayDevices(){
 <html>
     <head>
         <title>Lab 5: Device Search </title>
+        <link href="css/styles.css" type="text/css" rel="stylesheet">
     </head>
     <body>
         
