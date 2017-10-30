@@ -22,7 +22,7 @@ $cfg['blowfish_secret'] = ''; /* YOU MUST FILL IN THIS FOR COOKIE AUTH! */
 $i = 0;
 
 /**
- * First server
+ * First server - Cloud 9
  */
 $i++;
 /* Authentication type */
@@ -32,14 +32,16 @@ $cfg['Servers'][$i]['host'] = 'localhost';
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
+/**
+ * Heroku server
+ */
 $i++;
 /* Authentication type */
 $cfg['Servers'][$i]['auth_type'] = 'config';
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'us-cdbr-iron-east-05.cleardb.net';
-$cfg['Servers'][$i]['user'] = 'b187db0343a09b';
-$cfg['Servers'][$i]['password'] = "09b42118";
-
+$cfg['Servers'][$i]['user'] = 'b0320a7704e7c3';
+$cfg['Servers'][$i]['password'] = "07bc2173";
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
