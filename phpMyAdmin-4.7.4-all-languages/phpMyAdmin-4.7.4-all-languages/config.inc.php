@@ -40,9 +40,10 @@ $i++;
 $cfg['Servers'][$i]['auth_type'] = 'config';
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'us-cdbr-iron-east-05.cleardb.net';
-//mysql://b0320a7704e7c3:07bc2173@us-cdbr-iron-east-05.cleardb.net/heroku_a5080ea39ee8801?reconnect=true
-$cfg['Servers'][$i]['user'] = 'b0320a7704e7c3';
+//mysql://b0320a7704e7c3:07bc2173@us-cdbr-iron-east-05.cleardb.net/heroku_a5080ea39ee8801?reconnect=true$cfg['Servers'][$i]['user'] = 'b0320a7704e7c3';
 $cfg['Servers'][$i]['password'] = "07bc2173";
+$cfg['Servers'][$i]['user'] = "b0320a7704e7c3";
+
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
