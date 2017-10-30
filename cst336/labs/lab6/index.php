@@ -27,7 +27,7 @@ $stmt = $conn->prepare($sql);
 $stmt->execute($namedParameters);
 $record = $stmt->fetch(PDO::FETCH_ASSOC);//expecting only one record
 
-//print_r($record);
+print_r($record);
 
 if (empty($record)) {
     
