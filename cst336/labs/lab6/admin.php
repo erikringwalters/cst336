@@ -26,7 +26,7 @@ function displayUsers() {
 function getUserInfo($userId)
 {
      global $conn;
-    $sql = "SELECT 1 
+    $sql = "SELECT * 
             FROM tc_user
             WHERE 'userId' = ".$userId."";
     $statement = $conn->prepare($sql);
@@ -63,7 +63,7 @@ function getUserInfo($userId)
         
         <form action="addUser.php">
             
-            <input type="submit" value="Add new User" />
+            <input type="submit" value="Add new User"/>
             
         </form>
         
@@ -80,11 +80,39 @@ function getUserInfo($userId)
         
         <?php
         
+        function displayUserInformation() {
+    
+    include '../../../dbConnection.php';
+    $conn = getDatabaseConnection();
+    
+    $sql = "SELECT * 
+            FROM `tc_user` WHERE
+            userId = :userId" ;
+            
+    
+     $namedParam = array(":userId"=>$_POST['userId']);
+   
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($namedParam);
+    $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach ($records as $record) {
+        
+        echo  $record['firstName'] . " " . $record['lastName'] . " " . $record['email'] . " " . $record['universityId'] . " " . $record['gender'] . " " . $record['phone']. " " . $record['role'] ."<br />";
+        
+    }
+    
+}
+        
         $users =displayUsers();
         
         foreach($users as $user) {
             
-            echo    $user['userId'] . ". <a target='userInformation' href='userInformation.php?userId=".$user['userId']."'>" . $user['firstName'] . "  " . $user['lastName'] . "</a> |";
+            echo    $user['userId'] . ". <a onclick='userInformation()' 
+            
+            href='#'
+            >" . $user['firstName'] . "  " . $user['lastName'] . "</a> |";
             echo "[<a href='updateUser.php?userId=".$user['userId']."'> Update </a> ]";
             //echo "[<a href='deleteUser.php?userId=".$user['userId']."'> Delete </a> ]";
             echo "<form action='deleteUser.php' style='display:inline' onsubmit='return confirmDelete(\"".$user['firstName']."\")'>
@@ -105,7 +133,10 @@ function getUserInfo($userId)
          <div class="col-md-5">
          <iframe name="userInformation" width="400" height="400">
              <?php
-                displayUserInformation();
+                if(isset($user['userId']))
+                {
+                    getUserInfo();
+                }
             ?>
              
          </iframe>

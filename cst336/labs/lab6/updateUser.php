@@ -88,12 +88,12 @@ if (isset($_GET['userId'])) {
             <input type="hidden" name="userId" value="<?=$userInfo['userId']?>" />
             First Name: <input type="text" name="firstName" required value="<?=$userInfo['firstName']?>" /> <br>
             Last Name: <input type="text" name="lastName" required value="<?=$userInfo['lastName']?>"/> <br>
-            Email: <input type="text" name="email"/> <br>
-            University Id: <input type="text" name="universityId"/> <br>
-            Phone: <input type="text" name="phone"/> <br>
+            Email: <input type="text" name="email" value = "<?=$userInfo['email']?>"/> <br>
+            University Id: <input type="text" name="universityId" value="<?=$userInfo['universityId']?>"/> <br>
+            Phone: <input type="text" name="phone" value = "<?=$userInfo['phone']?>"/> <br>
             Gender: <input type="radio" name="gender" value="F" id="genderF"  <?=($userInfo['gender']=='F')?"checked":"" ?> required/> 
                     <label for="genderF">Female</label>
-                    <input type="radio" name="gender" value="M" id="genderM"  required/> 
+                    <input type="radio" name="gender" value="M" id="genderM" <?=($userInfo['gender']=='M')?"checked":"" ?> required/> 
                     <label for="genderM">Male</label><br>
             Role:   <select name="role">
                         <option value=""> Select One </option>
@@ -108,7 +108,8 @@ if (isset($_GET['userId'])) {
                             
                                 $departments = getDepartmentInfo();
                                 foreach ($departments as $record) {
-                                    echo "<option value='$record[departmentId]'>$record[deptName]</option>";
+                                     echo "<option value='$record[departmentId]' ".(($userInfo['deptId'] == $record['departmentId'])? "selected":"").">$record[deptName]</option>";
+
                                 }
                             
                             ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['username'])) { //validates that admin has indeed logged in
+if (!isset($_SESSION['userName'])) { //validates that admin has indeed logged in
     
     header("Location: index.php");
     
