@@ -11,7 +11,7 @@ function displayUserInformation() {
             userId = :userId" ;
             
     
-     $namedParam = array(":userId"=>$_POST['userId']);
+     $namedParam = array(":userId"=>$_GET['userId']);
    
     
     $stmt = $conn->prepare($sql);
@@ -20,7 +20,7 @@ function displayUserInformation() {
     
     foreach ($records as $record) {
         
-        echo  $record['firstName'] . " " . $record['lastName'] . " " . $record['email'] . " " . $record['universityId'] . " " . $record['gender'] . " " . $record['phone']. " " . $record['role'] ."<br />";
+        echo  $record['firstName'] . "<br/> " . $record['lastName'] . "<br/> " . $record['email'] . " <br/>" . $record['universityId'] . "<br/> " . $record['gender'] . "<br/> " . $record['phone']. " " . $record['role'] ."<br />";
         
     }
     

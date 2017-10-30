@@ -55,18 +55,19 @@ function getUserInfo($userId)
     </head>
     <body>
         
-
+<div class="col-md-1"></div>
         <h1> TCP ADMIN PAGE </h1>
+        <div class="col-md-1"></div>
         <h2> Welcome <?=$_SESSION['adminFullName']?>! </h2>
         
         <hr>
-        
+        <div class="col-md-1"></div>
         <form action="addUser.php">
             
-            <input type="submit" value="Add new User"/>
+            <input type="submit" value="Add new User"/> <br/><br/>
             
         </form>
-        
+        <div class="col-md-1"></div>
           <form action="logout.php">
             
             <input type="submit" value="Logout" />
@@ -75,6 +76,7 @@ function getUserInfo($userId)
         
         
         <br /><br />
+        <div class="col-md-1"></div>
                 <div class="col-md-7">
 
         
@@ -99,7 +101,7 @@ function getUserInfo($userId)
     
     foreach ($records as $record) {
         
-        echo  $record['firstName'] . " " . $record['lastName'] . " " . $record['email'] . " " . $record['universityId'] . " " . $record['gender'] . " " . $record['phone']. " " . $record['role'] ."<br />";
+        echo  $record['firstName'] . " " . $record['lastName'] . " " . $record['email'] . " " . $record['universityId'] . " " . $record['gender'] . " " . $record['phone']. " " . $record['role'] ."<br /><br /><br />";
         
     }
     
@@ -109,10 +111,8 @@ function getUserInfo($userId)
         
         foreach($users as $user) {
             
-            echo    $user['userId'] . ". <a onclick='userInformation()' 
-            
-            href='#'
-            >" . $user['firstName'] . "  " . $user['lastName'] . "</a> |";
+            echo    $user['userId'] . ". <a  href='userInformation.php?userId=".$user['userId']."'>"
+            . $user['firstName'] . "  " . $user['lastName'] . "</a> |";
             echo "[<a href='updateUser.php?userId=".$user['userId']."'> Update </a> ]";
             //echo "[<a href='deleteUser.php?userId=".$user['userId']."'> Delete </a> ]";
             echo "<form action='deleteUser.php' style='display:inline' onsubmit='return confirmDelete(\"".$user['firstName']."\")'>
@@ -130,16 +130,7 @@ function getUserInfo($userId)
         ?>
         </div>
         
-         <div class="col-md-5">
-         <iframe name="userInformation" width="400" height="400">
-             <?php
-                if(isset($user['userId']))
-                {
-                    getUserInfo();
-                }
-            ?>
-             
-         </iframe>
+        
         </div>
     </body>     
 </html>
