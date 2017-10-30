@@ -7,7 +7,7 @@ if (!isset($_SESSION['userName'])) { //validates that admin has indeed logged in
     
 }
 
- include("../../../dbConnection.php");
+ include("../../dbConnection.php");
  $conn = getDatabaseConnection();
 
 function getDepartmentInfo(){
