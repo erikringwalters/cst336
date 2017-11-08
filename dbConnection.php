@@ -1,10 +1,10 @@
 <?php
 
 
-function getDatabaseConnection(){
+function getDatabaseConnection($dbname = 'project'){
     
     $host = 'localhost';//cloud 9
-    $dbname = 'tcp';
+    // $dbname = 'tcp';
     $username = 'root';
     $password = '';
     
