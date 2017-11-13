@@ -1,32 +1,24 @@
-  
-   $("#letterBtn").click( function(){ 
-               // updateImage();
-               
-               var boxVal = $("#letterBox").val();
-               alert(boxVal);
-               
-            } );
-            
-    
-            function updateImage() {
-                
-                //document.getElementById("man").innerHTML = "<img src='img/stick_5.png' >";
-                $("img").attr("src","img/stick_3.png");
-            }
-    
-            
+
             var selectedWord = "";
             var selectedHint = "";
             var board = "";
             var remainingGuesses = 6;
-            var words = ["snake", "monkey", "beetle", "octopus", "horse"];
+            var words = [
+                {word: "snake", hint: "It's a reptile"},
+                {word: "monkey", hint: "It's a mammal"},
+                {word: "beetle", hint: "It's an insect"},
+                {word:"octopus", hint: "It's a marine animal"},
+                {word:"horse", hint: "It's a domestic animal"},
+                {word:"jackass", hint: "It's an animal too"}
+                ];
             var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 
                             'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 
                             'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
                             'Y', 'Z'];
 
             
-            window.onload = startGame();
+            //window.onload = startGame()
+            startGame();
             
             function startGame() {
                 
@@ -37,10 +29,21 @@
                 
             }
             
+            function initBoard() {
+                
+                for (var i = 0; i < selectedWord.length; i++) {
+                    
+                    board += "_";
+                }
+                console.log(board);
+            }
+            
+            
             function pickWord() {
                 var randomInt = Math.floor( Math.random() * words.length );
-                selectedWord = words[randomInt];
-                //console.log(selectedWord);
+                selectedWord = words[randomInt].word.toUpperCase();
+                selectedHint = words[randomInt].hint;
+                console.log(selectedWord);
             }
             
             function updateBoard() {
@@ -49,24 +52,15 @@
                 for (var letter of board) {
                     document.getElementById("word").innerHTML += letter + " ";
                 }
+                $("#word").append("<br/> ");
+                $("#word").append("<span class = 'hint'>Hint: " + selectedHint + "</span>");
             }
             
-            function initBoard() {
-                
-                for (var letter in selectedWord) {
-                    
-                    board += "_";
-                    
-                }
-                
-                console.log(board);
-                
-            }
             
-            initBoard();
-            for(var letter of board) {
-                document.getElementById("word").innerHTML += letter + " ";
-            }
+            // initBoard();
+            // for(var letter of board) {
+            //     document.getElementById("word").innerHTML += letter + " ";
+            // }
             
             function createLetters(){
                 
@@ -77,20 +71,22 @@
                 
             }
             
+            function updateImage() {
+                
+                //document.getElementById("man").innerHTML = "<img src='img/stick_5.png' >";
+                $("img").attr("src","img/stick_3.png");
+            }
+            
             //events
             
-            $("button").click( function(){ alert( $(this).attr("id")); });
-            $(".letter").click(function(){
-                console.log($(this).attr("id"));
-            });
-            
+           
             function checkLetter(letter) {
                 var positions = new Array();
                 //Put all the positions the letter exists in an array
                 for(var i = 0; i <selectedWord.length; i++)
                 {
                     console.log(selectedWord)
-                    if(letter == selectedWord){
+                    if(letter == selectedWord[i]){
                         positions.push(i);
                     }
                    
@@ -138,9 +134,7 @@
                 }
             }
             
-            $(".replayBtn").in("click", function() {
-               location.reload(); 
-            });
+          
             
             var words =[{ word: "snake", hint: "It's a reptile" },
                         { word: "monkey", hint: "It's a mammal" },
@@ -162,4 +156,32 @@
                 checkLetter($(this).attr("id"));
                 disableButton($(this));
             });
+            
+            //events
+             //$("button").click( function(){ alert( $(this).attr("id")); });
+            $(".letter").click(function(){
+                console.log($(this).attr("id"));
+            });
+            
+              $(".replayBtn").click( function() {
+               location.reload(); 
+            });
 
+
+            $("#letterBtn").click( function(){ 
+               // updateImage();
+               
+               var boxVal = $("#letterBox").val();
+               alert(boxVal);
+               
+            } );
+            
+            $("#displayHint").click(function() {
+                $(".hint").show();
+                $("#displayHint").hide();
+            })
+            
+            $(".letter").click(function(){
+                $("#word").hide();
+                $("#word").show();
+            })

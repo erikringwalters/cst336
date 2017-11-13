@@ -25,6 +25,7 @@
             </header>
             
             <div id="word"></div>
+            <button id="displayHint" class="btn-info btn">Display Hint</button>
             <div id="letters">
                 
               <!--
@@ -38,23 +39,22 @@
                <img src="img/stick_0.png" id="hangImg">
             </div>
         </div>
-
-    <script src="js/hangman.js"></script>
-    
-    <div id="letters">
-        <input type="text" id="letterBox">
-        <button id="letterBtn">Submit</button>
-    </div>
-    
-    
+        
+            
             <div id="won">
             <h2>You Won!</h2>
-            <button class="replayBtn btn btn-success">Play Button</button>
+            <button class="replayBtn btn btn-success">Play Again</button>
             </div>
-            <div>
+            <div id="lost">
                 <h2>You Lost!</h2>
                 <button class="replayBtn btn btn-warning">Play Again</button>
             </div>
+
+    <script src="js/hangman.js"></script>
+    
+   
+    
+
     
     </body>
 </html>
