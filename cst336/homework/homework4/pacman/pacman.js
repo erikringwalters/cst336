@@ -1,7 +1,11 @@
+
 var output;
 var pacman;
 var loopTimer;
 var numLoops = 0;
+var direction = 'left';
+var walls = new Array();
+
 
 
 var upArrowDown = false;
@@ -16,13 +20,30 @@ function loadComplete(){
 	pacman = document.getElementById('pacman');
 	
 	pacman.style.left = "280px";
-	pacman.style.top = "260px";
+	pacman.style.top = "240px";
 	pacman.style.width = '40px';
 	pacman.style.height = '40px';
 	
 	loopTimer = setInterval(loop, 50);
 	
-
+	//inside walls
+    createWall(200, 280, 300, 40);
+    
+    //top wall
+    createWall(-20, 0, 600, 40);
+    
+    // left side walls
+    createWall(0, 0, 640, 180);
+    createWall(0, 220, 40, 180);
+    
+    //right side walls
+    createWall(560, 0, 40, 180);
+    createWall(560, 220, 40, 180);
+    
+    //bottom wall;
+    createWall(-20, 360, 640, 40);
+    
+    
 }
 
 
@@ -38,6 +59,10 @@ function createWall()
 	wall.style.height = '40px';
 	wall.style.width = '200px';
 	gameWindow.appendChild(wall);
+	
+	var numWalls = walls.length;
+	walls[numWalls] = wall;
+	output.innerHTML = walls.length;
 }
 
 function loop(){
@@ -67,7 +92,7 @@ function loop(){
         pacman.style.left = pacmanX + 'px';
     }
     
-    if(hittest(wall_1, pacman)) {
+    if(hittest(hitWall())) {
         pacman.style.left = originalLeft;
         pacman.style.top = originalTop;
     }
@@ -75,24 +100,48 @@ function loop(){
     
 }
 
+function hitWall() {
+    var hit = false;
+    if(hittest(walls[1], pacman) ) hit = true;
+    if(hittest(walls[2], pacman) ) hit = true;
+    if(hittest(walls[3], pacman) ) hit = true;
+    if(hittest(walls[4], pacman) ) hit = true;
+    if(hittest(walls[5], pacman) ) hit = true;
+    if(hittest(walls[6], pacman) ) hit = true;
+    return hit;
+
+}
+
 
 document.addEventListener('keydown', function(event){
     output.innerHTML = event.keyCode;
-    if(event.keyCode == 37) {
-        leftArrowDown = true;
-        pacman.className = "flip-horizontal";
+    if(event.keyCode == 37) {//left
+        pacman.style.left = parseInt(pacman.style.left) - PACMAN_SPEED + 'px';
+        if(!hitWall()) {
+            direction = 'left';
+             pacman.className = "flip-horizontal";
+        }
     }
-    if(event.keyCode == 38) {
-        upArrowDown = true;
+    if(event.keyCode == 38) {//up
+        pacman.style.top = parseInt(pacman.style.top) - PACMAN_SPEED + 'px';
+    if(!hitWall()) {
+        direction = 'up';
         pacman.className = "rotate270";
     }
-    if(event.keyCode == 39){ 
-        rightArrowDown = true;
+    }
+    if(event.keyCode == 39){//right 
+        pacman.style.left = parseInt(pacman.style.left) + PACMAN_SPEED + 'px';
+    if(!hitWall()) {
+        direction = 'right';
         pacman.className = "";
     }
-    if(event.keyCode == 40) {
-        downArrowDown = true;
+    }
+    if(event.keyCode == 40) {//down
+        pacman.style.top = parseInt(pacman.style.top) + PACMAN_SPEED + 'px';
+    if(!hitWall()) {
+        direction = 'down';
         pacman.className = "rotate90";
+    }
     }
 });
 
