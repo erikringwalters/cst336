@@ -41,7 +41,7 @@ body{
 	-o-transform: scaleX(-1);
 	transform: scaleX(-1);
 	-ms-filter: fliph; 
-	filer: fliph;
+	filter: fliph;
 }
 
 .wall{
@@ -52,7 +52,7 @@ body{
 	-border-radius: 8px;
 }
 
-#pacman{
+#pacman, #redGhost{
 	position: absolute;
 }
 

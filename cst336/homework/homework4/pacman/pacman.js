@@ -7,10 +7,10 @@ var output;
 var pacman;
 var loopTimer;
 var numLoops = 0;
-var direction = 'left';
+var direction = 'right';
 var walls = new Array();
 var gameWindow = document.getElementById('gameWindow');
-
+var redGhost;
 
 
 
@@ -21,37 +21,6 @@ var rightArrowDown = false;
 
 const PACMAN_SPEED = 10;
 
-
-// function hittest(a, b){
-// 	var aX1 = parseInt(a.style.left);
-// 	var aY1 = parseInt(a.style.top);
-// 	var aX2 = aX1 + parseInt(a.style.width)-1;
-// 	var aY2 = aY1;
-// 	var aX3 = aX1;
-// 	var aY3 = aY1 + parseInt(a.style.height)-1;
-// 	var aX4 = aX2;
-// 	var aY4 = aY3;
-
-// 	var bX1 = parseInt(b.style.left);
-// 	var bY1 = parseInt(b.style.top);
-// 	var bX2 = bX1 + parseInt(b.style.width)-1;
-// 	var bY2 = bY1;
-// 	var bX3 = bX1;
-// 	var bY3 = bY1 + parseInt(b.style.height)-1;
-// 	var bX4 = bX2;
-// 	var bY4 = bY3;
-
-// 	var hOverlap = true;
-// 	if(aX1<bX1 && aX2<bX1) hOverlap = false;
-// 	if(aX1>bX2 && aX2>bX2) hOverlap = false;
-
-// 	var vOverlap = true;
-// 	if(aY1<bY1 && aY3<bY1) vOverlap = false;
-// 	if(aY1>bY3 && aY3>bY3) vOverlap = false;
-
-// 	if(hOverlap && vOverlap) return true;
-// 	else return false;
-// }
 
 function createWall(left, top, width, height)
 {
@@ -79,17 +48,17 @@ function loop(){
     var originalLeft = pacman.style.left;
     var originalTop = pacman.style.top;
     
-    if(upArrowDown){
+    if(direction == 'up'){
         var pacmanY = parseInt(pacman.style.top) - PACMAN_SPEED;
         if(pacmanY< -30)pacmanY = 390;
         pacman.style.top = pacmanY + 'px';
     }
-     if(downArrowDown){
+     if(direction == 'down'){
         var pacmanY = parseInt(pacman.style.top) + PACMAN_SPEED;
         if(pacmanY> 390)pacmanY = -30;
         pacman.style.top = pacmanY + 'px';
     }
-     if(leftArrowDown){
+     if(direction == 'left'){
         var pacmanX = parseInt(pacman.style.left) - PACMAN_SPEED;
         if(pacmanX< -30)pacmanX = 590;
         pacman.style.left = pacmanX + 'px';
@@ -99,23 +68,22 @@ function loop(){
         if(pacmanX > 590)pacmanX = -30;
         pacman.style.left = pacmanX + 'px';
     }
-    
-    // if(hittest(hitWall(), pacman)) {
-    //     pacman.style.left = originalLeft;
-    //     pacman.style.top = originalTop;
-    // }
-    else output.innerHTML = '';
-    
-}
-
-function hitWall() {
-    var hit = false;
-    for(var i = 0; i < walls.length; i++){
-        if(hittest(walls[i], pacman) ) hit = true;
+     if(direction == 'right'){
+        var pacmanX = parseInt(pacman.style.left) + PACMAN_SPEED;
+        if(pacmanX > 590)pacmanX = -30;
+        pacman.style.left = pacmanX + 'px';
     }
-    return hit;
-
+    
+   if(hitWall()){
+      pacman.style.left=originalLeft;
+    pacman.style.top = originalTop;
+   }
+    
+  
+    
 }
+
+
 
 function tryToChangeDirection(){
     var originalLeft = pacman.style.left;
@@ -161,6 +129,12 @@ function loadComplete(){
 	pacman.style.top = "240px";
 	pacman.style.width = '40px';
 	pacman.style.height = '40px';
+	
+	redGhost = document.getElementById('redGhost');
+	redGhost.style.left = '280px';
+	redGhost.style.top = '40px';
+	redGhost.style.width = '40px';
+	redGhost.style.height = '40px';
 	
 	loopTimer = setInterval(loop, 50);
 	
@@ -211,7 +185,51 @@ function loadComplete(){
     
 }
 
+
+function hittest(a, b){
+	var aX1 = parseInt(a.style.left);
+	var aY1 = parseInt(a.style.top);
+	var aX2 = aX1 + parseInt(a.style.width)-1;
+	var aY2 = aY1;
+	var aX3 = aX1;
+	var aY3 = aY1 + parseInt(a.style.height)-1;
+	var aX4 = aX2;
+	var aY4 = aY3;
+
+	var bX1 = parseInt(b.style.left);
+	var bY1 = parseInt(b.style.top);
+	var bX2 = bX1 + parseInt(b.style.width)-1;
+	var bY2 = bY1;
+	var bX3 = bX1;
+	var bY3 = bY1 + parseInt(b.style.height)-1;
+	var bX4 = bX2;
+	var bY4 = bY3;
+
+	var hOverlap = true;
+	if(aX1<bX1 && aX2<bX1) hOverlap = false;
+	if(aX1>bX2 && aX2>bX2) hOverlap = false;
+
+	var vOverlap = true;
+	if(aY1<bY1 && aY3<bY1) vOverlap = false;
+	if(aY1>bY3 && aY3>bY3) vOverlap = false;
+
+	if(hOverlap && vOverlap) return true;
+	else return false;
+}
+
+function hitWall() {
+    var hit = false;
+    for(var i = 0; i < walls.length; i++){
+        if(hittest(walls[i], pacman) ) hit = true;
+    }
+    return hit;
+
+}
+
 document.addEventListener('keydown', function(event){
+    
+      var originalLeft = pacman.style.left;
+    var originalTop = pacman.style.top;
     //output.innerHTML = event.keyCode;
     if(event.keyCode == 37) {//left
         pacman.style.left = parseInt(pacman.style.left) - PACMAN_SPEED + 'px';
@@ -241,7 +259,12 @@ document.addEventListener('keydown', function(event){
         pacman.className = "rotate90";
     }
     }
+    
+     pacman.style.left = originalLeft;
+        pacman.style.top = originalTop;
 });
+
+
 
 document.addEventListener('keyup', function(event){
     if(event.keyCode == 37) leftArrowDown = false;
