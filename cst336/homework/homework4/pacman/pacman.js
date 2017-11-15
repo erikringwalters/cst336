@@ -11,7 +11,7 @@ var direction = 'right';
 var walls = new Array();
 var gameWindow = document.getElementById('gameWindow');
 var redGhost;
-
+var rgDirection;
 
 
 var upArrowDown = false;
@@ -20,6 +20,9 @@ var leftArrowDown = false;
 var rightArrowDown = false;
 
 const PACMAN_SPEED = 10;
+
+const GHOST_SPEED = 5;
+
 
 
 function createWall(left, top, width, height)
@@ -74,44 +77,106 @@ function loop(){
         pacman.style.left = pacmanX + 'px';
     }
     
-   if(hitWall()){
+   if(hitWall(pacman)){
       pacman.style.left=originalLeft;
     pacman.style.top = originalTop;
    }
-    
-  
-    
+   
+  if(hittest(pacman, redGhost)){
+      output.innerHTML = 'You Died';
+  }
+
+//   if(rgX>590) rgX = -30;
+//   redGhost.style.left = rgX + GHOST_SPEED + 'px';
+   
+ // if(hitWall(redGhost)) redGhost.style.left = rgX + 'px';
+   
+   moveRedGhost();
+   
+  if(hittest(pacman, redGhost)) {
+      clearInterval(loopTimer);
+  }
 }
 
-
+function moveRedGhost()
+{
+       
+   //move red ghost
+   //Asumption that there are no dead ends in the masze
+   //Rules never go in the opposite direction
+   //Randomly choose a direction every move (excluding the opposite direction)
+   var rgX = parseInt(redGhost.style.left);
+   var rgY = parseInt(redGhost.style.top);
+   
+   var rgNewDirection;
+   
+   var rgOppositeDirection;
+   if(rgDirection=='left') rgOppositeDirection = 'right';
+   else if(rgDirection=='right') rgOppositeDirection = 'left';
+   else if(rgDirection=='down') rgOppositeDirection = 'up';
+   else if(rgDirection=='up') rgOppositeDirection = 'down';
+   do{
+       redGhost.style.left = rgX + 'px';
+       redGhost.style.top = rgY + 'px';
+   
+       do{
+           var r = Math.floor(Math.random()*4);
+           if(r==0)rgNewDirection = 'right';
+           else if(r==1) rgNewDirection = 'left';
+           else if(r==2) rgNewDirection = 'down';
+           else if(r==3) rgNewDirection = 'up';
+           
+       }while(rgNewDirection == rgOppositeDirection);
+       
+       if(rgNewDirection == 'right'){
+           if(rgX>590) rgX = -30;
+           redGhost.style.left = rgX + GHOST_SPEED + 'px';
+       }
+       else if(rgNewDirection == 'left'){
+           if(rgX< -30) rgX = 590;
+           redGhost.style.left = rgX - GHOST_SPEED + 'px';
+       }
+       else if(rgNewDirection == 'down'){
+           if(rgX>390) rgX = -30;
+           redGhost.style.top = rgY + GHOST_SPEED + 'px';
+       }
+       else if(rgNewDirection == 'up'){
+           if(rgX<-30) rgX = 390;
+           redGhost.style.top = rgY - GHOST_SPEED + 'px';
+       }
+   }while(hitWall(redGhost));
+   
+   rgDirection = rgNewDirection;
+   
+}
 
 function tryToChangeDirection(){
     var originalLeft = pacman.style.left;
     var originalTop = pacman.style.top;
     if(leftArrowDown){
         pacman.style.left = parseInt(pacman.style.left) - PACMAN_SPEED + 'px';
-        if(!hitWall()){
+        if(!hitWall(pacman)){
             direction = 'left';
             pacman.className = "flip-horizontal";
         }
     }
     if(upArrowDown){
         pacman.style.top = parseInt(pacman.style.top) - PACMAN_SPEED + 'px';
-        if(!hitWall()){
+        if(!hitWall(pacman)){
             direction = 'up';
             pacman.className = "rotate270";
         }
     }
     if(rightArrowDown){
         pacman.style.left = parseInt(pacman.style.left) + PACMAN_SPEED + 'px';
-        if(!hitWall()){
+        if(!hitWall(pacman)){
             direction = 'right';
             pacman.className = "";
         }
     }
     if(downArrowDown){
         pacman.style.top = parseInt(pacman.style.top) + PACMAN_SPEED + 'px';
-        if(!hitWall()){
+        if(!hitWall(pacman)){
             direction = 'down';
             pacman.className = "rotate90";
         }
@@ -217,7 +282,7 @@ function hittest(a, b){
 	else return false;
 }
 
-function hitWall() {
+function hitWall(element) {
     var hit = false;
     for(var i = 0; i < walls.length; i++){
         if(hittest(walls[i], pacman) ) hit = true;
@@ -233,28 +298,28 @@ document.addEventListener('keydown', function(event){
     //output.innerHTML = event.keyCode;
     if(event.keyCode == 37) {//left
         pacman.style.left = parseInt(pacman.style.left) - PACMAN_SPEED + 'px';
-        if(!hitWall()) {
+        if(!hitWall(pacman)) {
             direction = 'left';
              pacman.className = "flip-horizontal";
         }
     }
     if(event.keyCode == 38) {//up
         pacman.style.top = parseInt(pacman.style.top) - PACMAN_SPEED + 'px';
-    if(!hitWall()) {
+    if(!hitWall(pacman)) {
         direction = 'up';
         pacman.className = "rotate270";
     }
     }
     if(event.keyCode == 39){//right 
         pacman.style.left = parseInt(pacman.style.left) + PACMAN_SPEED + 'px';
-    if(!hitWall()) {
+    if(!hitWall(pacman)) {
         direction = 'right';
         pacman.className = "";
     }
     }
     if(event.keyCode == 40) {//down
         pacman.style.top = parseInt(pacman.style.top) + PACMAN_SPEED + 'px';
-    if(!hitWall()) {
+    if(!hitWall(pacman)) {
         direction = 'down';
         pacman.className = "rotate90";
     }
