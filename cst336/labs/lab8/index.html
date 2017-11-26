@@ -98,6 +98,21 @@
             complete: function(data, status){}
         })
     }
+    function comparePasswords()
+    {
+           if($("#p1").val() == $("#p2").val() )
+                {
+                    $("#passwords").html("Good");
+                    $("#passwords").removeClass("matching unmatching");
+                    $("#passwords").addClass("matching");
+                    
+                }
+                else{
+                 $("#passwords").html("Passwords don't match");
+                    $("#passwords").removeClass("matching unmatching");
+                    $("#passwords").addClass("unmatching");
+                }
+    }
     
     //event handlers
     
@@ -144,12 +159,18 @@
             Select a County: <select id= "countyId"></select><br>
             
             Desired Username: <input type="text"><br>
-            Password: <input type="password"><br>
-            Type Password Again: <input type="password"><br>
+            Password: <input id="p1" type="password"><br>
+            Type Password Again: <input id="p2" type="password"><br>
+            <p id="passwords"></p>
+            <script id="checkPasswords">
+            $("#p1").change(function(){comparePasswords() });
+            $("#p2").change(function(){comparePasswords() });
+            </script>
             <input type="submit" value="Sign up!">
         </fieldset>
     </form>
 
+<
 
 
 

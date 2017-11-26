@@ -16,3 +16,9 @@ margin-top: 10px;
 .notFound{
     color: red;
 }
+.matching{
+    color: forestgreen;
+}
+.unmatching{
+    color: red;
+}
