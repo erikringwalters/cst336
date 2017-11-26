@@ -67,10 +67,13 @@
         data: { "state": $("#stateId").val()},
         success: function(data,status) {
         //alert(data[0].county);
+        var options;
         for(var i = 0; i < data.length; i++)
         {
-            $("#countyId").html("<option>" +  + "</option>");
+            options += "<option>" + data[i].county + "</option>"
         }
+        
+        $("#countyId").html(options);
         
         },
         
