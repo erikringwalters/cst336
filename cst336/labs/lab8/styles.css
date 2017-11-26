@@ -1,7 +1,7 @@
 body{
-    background-color: white;
+    background-color: #707070;
     margin-left: 50px;
-    
+    color: antiquewhite;
 }
 option{
     margin-top: 10px;
@@ -11,14 +11,41 @@ margin-top: 10px;
     
 }
 .found{
-    color: forestgreen;
+    color: #aee8af;
 }
 .notFound{
-    color: red;
+    color: #ea8ca1;
 }
 .matching{
-    color: forestgreen;
+    color: #aee8af;
 }
 .unmatching{
-    color: red;
+    color: #ea8ca1;
+}
+option{
+    color : black;
+}
+select{
+    color: black;
+}
+input{
+    color: black;
+}
+h1{
+    font-size: 24px;
+}
+p{
+    font-weight: bold;
+}
+input{
+    border-radius: 2px;
+}
+#stateId{
+    margin-bottom: 10px;
+}
+hr{
+    display: block;
+    height: 2px;
+    color: antiquewhite;
+    margin: 20px;
 }
