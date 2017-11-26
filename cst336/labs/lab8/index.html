@@ -39,7 +39,7 @@
               $("#lat").html(data.latitude);
               $("#long").html(data.longitude);
                $("#city").removeClass("notFound found");
-                  $("#city").addClass("found");
+            $("#city").addClass("found");
               }
             },
             error: function(data, status)
@@ -81,23 +81,43 @@
         });//ajax
     }
     
-    function checkUsername()
-    {
-        alert("hello");
+    function checkUsername() {
+        //alert("hello")
         $.ajax({
+
             type: "GET",
             url: "checkUsername.php",
             dataType: "json",
-            data: {"zip": $("#zip").val()},
-            success: function(data, status)
-            {
-              $('#city').html(data.city);
-              $('#lat').html(data.latitude);
-              $('#long').html(data.longitude);
+            data: { "username": $("#username").val()},
+            success: function(data,status) {
+               //alert(data);
+               
+               if (!data) {
+                   
+                   //alert("USERNAME AVAILABLE!");
+                   $("#unameCheck").html("USERNAME AVAILABLE!");
+                   $("#unameCheck").removeClass("notFound found");
+                  $("#unameCheck").addClass("found");
+                   
+               } else {
+                   
+                   //alert ("username already taken!");
+                   $("#unameCheck").html("Username taken ):");
+                   $("#unameCheck").removeClass("notFound found");
+                  $("#unameCheck").addClass("notFound");
+               }
+            
             },
-            complete: function(data, status){}
-        })
+              error: function(data,status) { //optional, used for debugging purposes
+            alert(status);
+            },
+            complete: function(data,status) { //optional, used for debugging purposes
+            //alert(status);
+            }
+            
+            });//ajax
     }
+    
     function comparePasswords()
     {
            if($("#p1").val() == $("#p2").val() )
@@ -113,7 +133,9 @@
                     $("#passwords").addClass("unmatching");
                 }
     }
-    
+    function isUsernameAvailable() {
+        
+    }
     //event handlers
     
     $(document).ready(  function(){
@@ -158,11 +180,13 @@
             </select><br />
             Select a County: <select id= "countyId"></select><br>
             
-            Desired Username: <input type="text"><br>
+            Desired Username: <input id="username" type="text"><br>
+            <p id="unameCheck"></p>
             Password: <input id="p1" type="password"><br>
             Type Password Again: <input id="p2" type="password"><br>
             <p id="passwords"></p>
-            <script id="checkPasswords">
+            <script id="checkCredentials">
+            $("#username").change(function(){checkUsername()});
             $("#p1").change(function(){comparePasswords() });
             $("#p2").change(function(){comparePasswords() });
             </script>
