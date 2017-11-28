@@ -12,6 +12,85 @@ crossorigin="anonymous">
     <h1>Amazon Product Info Filler</h1>
     <hr>
     <h3>Enter an ASIN code from an Amazon product.</h3>
-    ASIN: <input type="text" name="asin" value="B074JHZM3D"></link>
+   
     
+    <script>
+    // getProductFromAmazon: function () {
+    //         var asin = $("input#Product_Asin").val();
+    //         if (!asin)
+    //             return;
+    //         $('#amazonGetMessage').html('');
+    //         $.get("http://lapct01.azurewebsites.net//amazonapi/get", {
+    //             asin: asin
+    //         }, function (data, status) {
+    //             if (!data.success) {
+    //                 $('#amazonGetMessage').html('ASIN not found on Amazon');
+    //                 return;
+    //             }
+    //             var amazonProduct = data.amazonProduct;
+    //             $("#Product_ProductTitle").val(amazonProduct.Title);
+    //             // clear bullets
+    //             for (var bi = 0; bi < 5; bi++) {
+    //                 var pbs = bi + 1;
+    //                 var pbselector = "#Product_Bullet" + pbs;
+    //                 $(pbselector).val("");
+    //             }
+    //             // set bullets
+    //             for (var bi = 0; bi < 5; bi++) {
+    //                 var b = amazonProduct.BulletPoints[bi];
+    //                 if (!b)
+    //                     break;
+    //                 var pbs = bi + 1;
+    //                 var pbselector = "#Product_Bullet" + pbs;
+    //                 $(pbselector).val(b);
+    //             }
+    //             $('#clearAllImages').click();
+    //             for (var ii = 0; ii < 7; ii++) {
+    //                 var i = amazonProduct.ImageSets[ii];
+    //                 if (!i)
+    //                     break;
+    //                 var imgPath = i.Large.Url;
+    //                 var imageSequence = ii + 1;
+    //                 $('input#tempImageUrl').val(imgPath);
+    //                 $('input#tempImageSequence').val(imageSequence);
+    //                 $('input#setImage').click();
+    //             }
+    //             $("#Product_ProductDescription").val(amazonProduct.Description);
+    //             $("#RegularPrice").val(amazonProduct.SalePrice.Amount / 100);
+    //             if (!$("#Category").val()) {
+    //                 $("#Category").val(amazonProduct.BrowseNodes[0].Name);
+    //             }
+    //         });
+    //     }
+    $(document).ready(function () {
+  //code here
+   function getProductInfo()
+    {
+        $.ajax({
+            type: "GET",
+            url: "http://lapct01.azurewebsites.net//amazonapi/get",
+            dataType: "json",
+            data: {
+            "asin": $("#asin").val()},
+            success: function(data, status)
+            {
+                var title = data.title;
+                $("#title").html(title);
+            }
+            
+        });//ajax
+    }
+});
+   
+    </script>
+    
+    
+     <form>
+        ASIN: <input type="text" name="asin" value="B074JHZM3D"></input>
+        <input type="checkbox" checked="checked">Show Images</input> 
+    </form>
+    Title: <input id="title" type="text" name="title"></input>
+     <script>
+        getProductInfo();    
+    </script>
 </body>
