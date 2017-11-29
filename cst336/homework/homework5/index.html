@@ -20,7 +20,7 @@ crossorigin="anonymous">
      <form>
          ASIN: <input id="asin" type="text" name="asin" placeholder="B074JHZM3D"></input>
         <input id="showImages" type="checkbox" checked="checked">Show Images</input> 
-        <input id="submit" type="button" value="Submit">
+        <input id="submit" type="button" value="Submit" class="btn btn-default">
     </form>
  
        <script>
@@ -79,7 +79,7 @@ crossorigin="anonymous">
             type: "GET",
             
             url: "http://lapct01.azurewebsites.net//amazonapi/get?asin=" + $("#asin").val(),
-            dataType: "json",
+            //dataType: "json",
             data: {
             "asin": $("#asin").val()},
          
@@ -108,8 +108,10 @@ crossorigin="anonymous">
     //                 $('input#tempImageSequence').val(imageSequence);
     //                 $('input#setImage').click();
     //             }
-    if($("#showImages").attr("checked","checked"))
-                for(var i = 0; i < 3; i++)
+            if ($('#showImages').is(":checked"))
+            {
+  // it is checked
+            for(var i = 0; i < 3; i++)
                 {
                     var ii = data.amazonProduct.ImageSets[i];
                     if(!ii) break;
@@ -118,7 +120,8 @@ crossorigin="anonymous">
                     
                 }
             }
-            
+            }
+    
             
         });//ajax
     }
@@ -129,7 +132,7 @@ crossorigin="anonymous">
 
             type: "GET",
             url: "functions.php?asin=",
-            dataType: "json",
+            //dataType: "json",
             data: { "asin": $("#asin").val()},
             success: function(data,status) {
                //alert(data);
@@ -138,7 +141,9 @@ crossorigin="anonymous">
                   alert("No data available.");
                    
                } else {
-                   $("#info").html(data);
+                   var accessed = 0;
+                   
+                   $("#history").html(data);
                    //alert ("username already taken!");
                   //alert(data);
                }
@@ -168,10 +173,14 @@ crossorigin="anonymous">
     <?php
     getProductFromDb();
     ?>
-    <p id="timesAccessed"></p>
+    <h3>History</h3>
+    <div id="history">
+        
+    </div>
+    
     <ul>
         <h3>Title</h3>
-        <p id="info"></p>
+        
      <li id="title" type="text" name="title"></li>
      
      <h3>Brand</h3>

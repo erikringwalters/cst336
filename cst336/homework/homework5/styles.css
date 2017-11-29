@@ -18,9 +18,26 @@ hr{
     color: salmon;
 }
 img{
-    border-radius: 10px;
+    border-radius: 20px;
     margin: 5px;
 }
 input{
     color: black;
 }
+#count{
+    color: skyblue;
+}
+h1{
+    font-weight: bold;
+}
+h3{
+    font-size: 28px
+}
+input{
+    margin: 10px;
+    font-size: 18px;
+}
+li{
+    font-size: 18px;
+}
+
