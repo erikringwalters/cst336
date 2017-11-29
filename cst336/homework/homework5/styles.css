@@ -1,6 +1,7 @@
 body{
-    background-color: #f3e5ab;
+    background-color: #3f3f3f;
     margin: 20px;
+    color: white;
 }
 hr{
     display: block;
@@ -15,4 +16,11 @@ hr{
 }
 #timesAccessed{
     color: salmon;
+}
+img{
+    border-radius: 10px;
+    margin: 5px;
+}
+input{
+    color: black;
 }

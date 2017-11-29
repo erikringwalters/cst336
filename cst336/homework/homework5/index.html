@@ -20,6 +20,7 @@ crossorigin="anonymous">
      <form>
          ASIN: <input id="asin" type="text" name="asin" placeholder="B074JHZM3D"></input>
         <input id="showImages" type="checkbox" checked="checked">Show Images</input> 
+        <input id="submit" type="button" value="Submit">
     </form>
  
        <script>
@@ -122,12 +123,12 @@ crossorigin="anonymous">
         });//ajax
     }
  
-   function checkUsername() {
+   function getProductFromDb() {
         //alert("hello")
         $.ajax({
 
             type: "GET",
-            url: "functions.php",
+            url: "functions.php?asin=",
             dataType: "json",
             data: { "asin": $("#asin").val()},
             success: function(data,status) {
@@ -137,14 +138,14 @@ crossorigin="anonymous">
                   alert("No data available.");
                    
                } else {
-                   
+                   $("#info").html(data);
                    //alert ("username already taken!");
-                  alert(data);
+                  //alert(data);
                }
             
             },
               error: function(data,status) { //optional, used for debugging purposes
-            alert(status);
+            //alert(status);
             },
             complete: function(data,status) { //optional, used for debugging purposes
             //alert(status);
@@ -152,13 +153,25 @@ crossorigin="anonymous">
             
             });//ajax
    }
+   function insertProduct(){
+       
+   }
        // getProductInfo
         
-        $("#asin").change(function(){getProductInfo() });
+        $("#submit").click(function(){getProductInfo() });
+        $("#submit").click(function(){getProductInfo() });
+
+    $(document).ready( function() {
+        $("#asin").change(function(){ getProductFromDb(); });
+    });
     </script>
+    <?php
+    getProductFromDb();
+    ?>
     <p id="timesAccessed"></p>
     <ul>
         <h3>Title</h3>
+        <p id="info"></p>
      <li id="title" type="text" name="title"></li>
      
      <h3>Brand</h3>
