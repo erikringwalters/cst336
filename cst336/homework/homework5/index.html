@@ -16,10 +16,10 @@ crossorigin="anonymous">
    
     
  
-    
+    <div class="col-md-6">
      <form>
          ASIN: <input id="asin" type="text" name="asin" placeholder="B074JHZM3D"></input>
-        <input type="checkbox" checked="checked">Show Images</input> 
+        <input id="showImages" type="checkbox" checked="checked">Show Images</input> 
     </form>
  
        <script>
@@ -91,19 +91,88 @@ crossorigin="anonymous">
                 //alert(status + ", The title is: " + data.amazonProduct.Title );
                 //print_r(data);
                 var title = data.amazonProduct.Title;
+                var desc = data.amazonProduct.Description;
+                var brand = data.amazonProduct.Brand;
                 $("#title").html(title);
+                $("#desc").html(desc);
+                $("#brand").html(brand);
+                
+    //              for (var ii = 0; ii < 7; ii++) {
+    //                 var i = amazonProduct.ImageSets[ii];
+    //                 if (!i)
+    //                     break;
+    //                 var imgPath = i.Large.Url;
+    //                 var imageSequence = ii + 1;
+    //                 $('input#tempImageUrl').val(imgPath);
+    //                 $('input#tempImageSequence').val(imageSequence);
+    //                 $('input#setImage').click();
+    //             }
+    if($("#"))
+                for(var i = 0; i < 3; i++)
+                {
+                    var ii = data.amazonProduct.ImageSets[i];
+                    if(!ii) break;
+                    var imgPath = ii.Large.Url;
+                    $('#img'+ (i+1)).attr("src", imgPath);
+                    
+                }
             }
             
             
         });//ajax
     }
  
-       // getProductInfo();
+   function checkUsername() {
+        //alert("hello")
+        $.ajax({
+
+            type: "GET",
+            url: "functions.php",
+            dataType: "json",
+            data: { "asin": $("#asin").val()},
+            success: function(data,status) {
+               //alert(data);
+       
+               if (!data) {
+                  alert("No data available.");
+                   
+               } else {
+                   
+                   //alert ("username already taken!");
+                  alert(data);
+               }
+            
+            },
+              error: function(data,status) { //optional, used for debugging purposes
+            alert(status);
+            },
+            complete: function(data,status) { //optional, used for debugging purposes
+            //alert(status);
+            }
+            
+            });//ajax
+   }
+       // getProductInfo
         
         $("#asin").change(function(){getProductInfo() });
     </script>
+    <p id="timesAccessed"></p>
     <ul>
-     <li id="title" type="text" name="title">Title: </li>
+        <h3>Title</h3>
+     <li id="title" type="text" name="title"></li>
+     
+     <h3>Brand</h3>
+     <li id="brand" type="text" name="brand"></li>
+     <h3>Description</h3>
+     <li id="desc" type="text" name="desc"> </li>
     <p id="err"></p>
     </ul>
+    </div>
+    <div class="col-md-6">
+        <img id="img1" src="" alt="img1">
+        <br>
+        <img id="img2" src="" alt="img2">
+        <br>
+        <img id="img3" src="" alt="img3">
+    </div>
 </body>
