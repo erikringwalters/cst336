@@ -6,6 +6,7 @@ integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh
 crossorigin="anonymous">
 
 <link rel="stylesheet" href="styles.css"/>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 
 </head>
 <body>
@@ -14,7 +15,14 @@ crossorigin="anonymous">
     <h3>Enter an ASIN code from an Amazon product.</h3>
    
     
-    <script>
+ 
+    
+     <form>
+         ASIN: <input id="asin" type="text" name="asin" placeholder="B074JHZM3D"></input>
+        <input type="checkbox" checked="checked">Show Images</input> 
+    </form>
+ 
+       <script>
     // getProductFromAmazon: function () {
     //         var asin = $("input#Product_Asin").val();
     //         if (!asin)
@@ -62,35 +70,40 @@ crossorigin="anonymous">
     //             }
     //         });
     //     }
-    $(document).ready(function () {
-  //code here
+   var asin = $("#asin").val();
    function getProductInfo()
     {
+      
         $.ajax({
             type: "GET",
-            url: "http://lapct01.azurewebsites.net//amazonapi/get",
+            
+            url: "http://lapct01.azurewebsites.net//amazonapi/get?asin=" + $("#asin").val(),
             dataType: "json",
             data: {
             "asin": $("#asin").val()},
+         
             success: function(data, status)
             {
-                var title = data.title;
+                   if(!data)
+            {
+                $("#err").html("Invalid ASIN");
+            }
+                //alert(status + ", The title is: " + data.amazonProduct.Title );
+                //print_r(data);
+                var title = data.amazonProduct.Title;
                 $("#title").html(title);
             }
             
+            
         });//ajax
     }
-});
-   
+ 
+       // getProductInfo();
+        
+        $("#asin").change(function(){getProductInfo() });
     </script>
-    
-    
-     <form>
-        ASIN: <input type="text" name="asin" value="B074JHZM3D"></input>
-        <input type="checkbox" checked="checked">Show Images</input> 
-    </form>
-    Title: <input id="title" type="text" name="title"></input>
-     <script>
-        getProductInfo();    
-    </script>
+    <ul>
+     <li id="title" type="text" name="title">Title: </li>
+    <p id="err"></p>
+    </ul>
 </body>
