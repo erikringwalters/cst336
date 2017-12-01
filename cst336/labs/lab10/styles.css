@@ -1,0 +1,20 @@
+body{
+    text-align: center;
+}
+
+.thumbnail:active {
+  color: #424242; 
+
+  opacity: 1;
+  transform: scale(10);
+  text-align: center;
+  -ms-transform: scale(10); /* IE 9 
+  -webkit-transform: scale(10); /* Safari and Chrome 
+ */
+}
+img{
+    margin: 10px;
+}
+#submit{
+    margin-bottom: 200px;
+}
