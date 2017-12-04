@@ -1,9 +1,14 @@
 <?php
-include 'inc/header.php';
+    include 'inc/header.php';
 ?>
             
         <!-- add Carousel component -->
         <br /><br />
-        <a class="btn btn-outline-primary" href="adoptions.php" role="button">Adopt Now!</a>
+        <a class="btn btn-outline-primary" href="adoptions.php" role="button">Adopt Now! </a>
+
+        <br /><br />
+        <hr>
         
-    </body>
+<?php
+    include 'inc/footer.php';
+?>
