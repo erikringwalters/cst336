@@ -1,9 +1,10 @@
 <?php
 
 
-function getDatabaseConnection($dbname = 'Instruments'){
+function getDatabaseConnection(){
     
     $host = 'localhost';//cloud 9
+    $dbname = 'Instruments';
     // $dbname = 'tcp';
     $username = 'root';
     $password = '';

@@ -8,7 +8,7 @@ if (!isset($_SESSION['userName'])) { //checks whether admin has logged in
     
 }
 
-include '../dbConnection.php';
+include '../../dbConnection.php';
 $conn = getDatabaseConnection();
 
 
@@ -81,7 +81,7 @@ function getUserInfo($Id)
         
         <?php
         
-        function displayUserInformation() {
+        function displayInstrumentInformation() {
     
     include '../dbConnection.php';
     $conn = getDatabaseConnection();
@@ -99,7 +99,9 @@ function getUserInfo($Id)
     
     foreach ($records as $record) {
         
-        echo  $record['firstName'] . " " . $record['lastName'] . " " . $record['email'] . " " . $record['universityId'] . " " . $record['gender'] . " " . $record['phone']. " " . $record['role'] ."<br /><br /><br />";
+        echo  $record['ID'] . " " . $record['Name'] . " " . $record['Brand'] . " " . $record["Weight"]
+        . " " . $record["Price"] . " " . $record["Rating"] . " " . $record['Type'] . " " .  $record['Isin']
+        . " " . $record['Description']. " " . $record['Portable'] ."<br /><br /><br />";
         
     }
     
@@ -110,10 +112,10 @@ function getUserInfo($Id)
         foreach($instruments as $instrument) {
             
             echo    $user['Id'] . ". <a  href='userInformation.php?Id=".$user['Id']."'>"
-            . $user['firstName'] . "  " . $user['lastName'] . "</a> |";
+            . $user['Name'] . "  " . $user['Brand'] . "</a> |";
             echo "[<a href='updateUser.php?Id=".$user['Id']."'> Update </a> ]";
             //echo "[<a href='deleteUser.php?Id=".$user['Id']."'> Delete </a> ]";
-            echo "<form action='deleteUser.php' style='display:inline' onsubmit='return confirmDelete(\"".$user['firstName']."\")'>
+            echo "<form action='deleteUser.php' style='display:inline' onsubmit='return confirmDelete(\"".$user['Name']."\")'>
                      <input type='hidden' name='Id' value='".$user['Id']."' />
                      <input type='submit' value='Delete'>
                   </form>

@@ -17,7 +17,7 @@ $password = sha1($_POST['password']);
 //         AND   password = '$password'";
 
 $sql = "SELECT *
-        FROM tc_admin
+        FROM admin
         WHERE userName = :userName 
         AND   password = :password";
 
