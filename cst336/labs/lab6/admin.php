@@ -107,7 +107,7 @@ function getUserInfo($userId)
     
 }
         
-        $users =displayUsers();
+        $users = displayUsers();
         
         foreach($users as $user) {
             

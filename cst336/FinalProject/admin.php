@@ -1,38 +1,33 @@
 <?php
 session_start();
-
 if (!isset($_SESSION['userName'])) { //checks whether admin has logged in
     
-    header("Location: index.php");
+    //header("Location: index.php");
     exit();
     
 }
-
 include '../../dbConnection.php';
 $conn = getDatabaseConnection();
-
-
 function displayInstruments() {
     global $conn;
     $sql = "SELECT * 
             FROM instrument
-            ORDER BY Id";
+            ORDER BY Name";
     $statement = $conn->prepare($sql);
     $statement->execute();
-    $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-    //print_r($users);
-    return $users;
+    $instruments = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //print_r($instruments);
+    return $instruments;
 }
-function getUserInfo($Id)
+function getInstrumentInfo($Id)
 {
      global $conn;
     $sql = "SELECT * 
             FROM instrument";
     $statement = $conn->prepare($sql);
     $statement->execute();
-    $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $instruments = $statement->fetchAll(PDO::FETCH_ASSOC);
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,7 +50,7 @@ function getUserInfo($Id)
     <body>
         
 <div class="col-md-1"></div>
-        <h1> TCP ADMIN PAGE </h1>
+        <h1> INSTRUMENT ADMIN PAGE </h1>
         <div class="col-md-1"></div>
         <h2> Welcome <?=$_SESSION['adminFullName']?>! </h2>
         
@@ -99,24 +94,24 @@ function getUserInfo($Id)
     
     foreach ($records as $record) {
         
-        echo  $record['ID'] . " " . $record['Name'] . " " . $record['Brand'] . " " . $record["Weight"]
-        . " " . $record["Price"] . " " . $record["Rating"] . " " . $record['Type'] . " " .  $record['Isin']
-        . " " . $record['Description']. " " . $record['Portable'] ."<br /><br /><br />";
+        echo  $record['Id'] . " " . $record['Name'] . " " . $record['Brand'] . " " . $record['Weight']
+        . " " . $record['Price'] . " " . $record['Rating'] . " " . $record['Type'] . " " .  $record['Isin']
+        . " " . $record['Description']. " " . $record['Portable'] . "<br /><br /><br />";
         
     }
     
 }
         
-        $instruments =displayInstruments();
+         $instruments = displayInstruments();
         
         foreach($instruments as $instrument) {
             
-            echo    $user['Id'] . ". <a  href='userInformation.php?Id=".$user['Id']."'>"
-            . $user['Name'] . "  " . $user['Brand'] . "</a> |";
-            echo "[<a href='updateUser.php?Id=".$user['Id']."'> Update </a> ]";
-            //echo "[<a href='deleteUser.php?Id=".$user['Id']."'> Delete </a> ]";
-            echo "<form action='deleteUser.php' style='display:inline' onsubmit='return confirmDelete(\"".$user['Name']."\")'>
-                     <input type='hidden' name='Id' value='".$user['Id']."' />
+            echo    $instrument['Id'] .".) ". " <a  href='instrumentInformation.php?Id=".$instrument['Id']."'>"
+            . $instrument['Name'] . "  " . $instrument['Brand'] . "</a> |";
+            echo "[<a href='updateInstrument.php?Id=".$instrument['Id']."'> Update </a> ]";
+            //echo "[<a href='deleteUser.php?userId=".$instrument['userId']."'> Delete </a> ]";
+            echo "<form action='deleteInstrument.php' style='display:inline' onsubmit='return confirmDelete(\"".$instrument['Name']."\")'>
+                     <input type='hidden' name='Id' value='".$instrument['Id']."' />
                      <input type='submit' value='Delete'>
                   </form>
                 ";
