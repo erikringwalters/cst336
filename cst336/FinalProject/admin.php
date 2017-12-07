@@ -58,7 +58,7 @@ function getInstrumentInfo($Id)
         <div class="col-md-1"></div>
         <form action="addUser.php">
             
-            <input type="submit" value="Add new User"/> <br/><br/>
+            <input type="submit" value="Add new Instrument"/> <br/><br/>
             
         </form>
         <div class="col-md-1"></div>
@@ -91,13 +91,20 @@ function getInstrumentInfo($Id)
     $stmt = $conn->prepare($sql);
     $stmt->execute($namedParam);
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+    //Aggregate stuff
+    global $totalRating;
+    $totalRating = 0;
+    global $totalInstruments;
+    $totalInstruments = 0;
     foreach ($records as $record) {
         
         echo  $record['Id'] . " " . $record['Name'] . " " . $record['Brand'] . " " . $record['Weight']
         . " " . $record['Price'] . " " . $record['Rating'] . " " . $record['Type'] . " " .  $record['Isin']
         . " " . $record['Description']. " " . $record['Portable'] . "<br /><br /><br />";
         
+        $totalRating += $record['Rating'];
+        $totalInstruments++;
+        echo "TR: ".  $totalRating . "  TI: ". $totalInstruments; 
     }
     
 }
@@ -106,7 +113,7 @@ function getInstrumentInfo($Id)
         
         foreach($instruments as $instrument) {
             
-            echo    $instrument['Id'] .".) ". " <a  href='instrumentInformation.php?Id=".$instrument['Id']."'>"
+            echo    $instrument['Id'] .".) ". " <a  href='instrumentInfo.php?Id=".$instrument['Id']."'>"
             . $instrument['Name'] . "  " . $instrument['Brand'] . "</a> |";
             echo "[<a href='updateInstrument.php?Id=".$instrument['Id']."'> Update </a> ]";
             //echo "[<a href='deleteUser.php?userId=".$instrument['userId']."'> Delete </a> ]";
@@ -119,9 +126,9 @@ function getInstrumentInfo($Id)
             echo "<br />";
             
         }
-        
-        
-        
+        echo $totalRating . "    " . $totalInstruments;
+        $avgRating = $totalRating/$totalInstruments;
+        echo "<h4> Average Rating: ". $avgRating . " </h4>"
         ?>
         </div>
         

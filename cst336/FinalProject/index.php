@@ -160,7 +160,7 @@ function displayInstruments(){
 ?>
 </table>
 
-?>
+
 <!Doctype html>
 <html>
 <head>

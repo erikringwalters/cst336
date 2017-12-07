@@ -86,19 +86,19 @@ if (isset($_GET['Id'])) {
     
          <form>
             
-            Name: <input type="text" name="Name" value="<?=$userInfo['Name']?>"required /> <br>
-            Brand: <input type="text" name="Brand" value="<?=$userInfo['Brand']?>"required/> <br>
-            Description: <input type="text" name="Description" value="<?=$userInfo['Description']?>"required /> <br>
-            Price: <input type="number" name="Price" value="<?=$userInfo['Price']?>"required/> <br>
+            Name: <input type="text" name="Name" value="<?=$instrumentInfo['Name']?>"required /> <br>
+            Brand: <input type="text" name="Brand" value="<?=$instrumentInfo['Brand']?>"required/> <br>
+            Description: <input type="text" name="Description" value="<?=$instrumentInfo['Description']?>"required /> <br>
+            Price: <input type="number" name="Price" value="<?=$instrumentInfo['Price']?>"required/> <br>
             
-            Rating: <input type="number" name="Rating" max="100"value="<?=$userInfo['Rating']?>"/> <br>
-            Weight: <input type="number" name="Weight"value="<?=$userInfo['Weight']?>"/> <br>
+            Rating: <input type="number" name="Rating" max="100"value="<?=$instrumentInfo['Rating']?>"/> <br>
+            Weight: <input type="number" name="Weight"value="<?=$instrumentInfo['Weight']?>"/> <br>
             Portable: <input type="radio" name="Portable" value="1" id="portY" required/> 
                     <label for="genderF">Yes</label>
                     <input type="radio" name="Portable" value="0" id="portN"  required/> 
                     <label for="genderM">No</label><br>
             Type:   <select name="Type">
-                        <option value="<?=$userInfo['Type']?>"> Select One </option>
+                        <option value="<?=$instrumentInfo['Type']?>"> Select One </option>
                         <option>Brass</option>
                         <option>Percussion</option>
                         <option>Stringed</option>
@@ -106,7 +106,7 @@ if (isset($_GET['Id'])) {
                         <option>Scientific</option>
                     </select>
             <br />
-           Isin (optional): <input type="text" name="Isin" value="<?=$userInfo['Isin']?>"/> <br> 
+           Isin (optional): <input type="text" name="Isin" value="<?=$instrumentInfo['Isin']?>"/> <br> 
                         <br />
                 <input type="submit" name="addInstrumentForm" value="Add Instrument!"/>
         </form>
