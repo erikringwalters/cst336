@@ -141,12 +141,12 @@ function displayInstruments(){
     <?php
      foreach ($records as $record) 
      {
-          $url = $record['movieId'];
+          $url = $record['Id'];
         echo "<tr>".
-        "<td>" . "<a href='instrumentInfo.php?Id=" . $url . "' target='movieInfoFrame'>" . $record['Name'] . "</a></td>".
+        "<td>" . "<a href='instrumentInfo.php?Id=" . $url . "''>" . $record['Name'] . "</a></td>".
         "<td> " .  $record['Brand']. "</td>". 
         "<td> ". $record['Type'] . "</td>" .
-        "<td>" . $record['Price'] . "</td>".
+        "<td> $" . $record['Price'] . "</td>".
         "<td> <a target='shoppingcart' href='shoppingcart.php?movieId=".$record['Id']."'> [Add to Cart] </a> <br /> </td>".
         "</tr>";
         
