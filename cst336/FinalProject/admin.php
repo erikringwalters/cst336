@@ -12,7 +12,7 @@ function displayInstruments() {
     global $conn;
     $sql = "SELECT * 
             FROM instrument
-            ORDER BY Name";
+            ORDER BY Id";
     $statement = $conn->prepare($sql);
     $statement->execute();
     $instruments = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -56,7 +56,7 @@ function getInstrumentInfo($Id)
         
         <hr>
         <div class="col-md-1"></div>
-        <form action="addUser.php">
+        <form action="addInstrument.php">
             
             <input type="submit" value="Add new Instrument"/> <br/><br/>
             

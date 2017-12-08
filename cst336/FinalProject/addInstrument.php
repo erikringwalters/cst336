@@ -74,11 +74,11 @@ if (isset($_GET['addInstrumentForm'])){
 
     <h1> Admin Section </h1>
     <h2> Adding New Instrument </h2>
+        <a type="button" href="admin.php">Back to admin home page</a> 
 
     <fieldset>
         
         <legend> Add New Instrument </legend>
-        
         <form>
             
             Name: <input type="text" name="Name" required /> <br>
@@ -89,9 +89,9 @@ if (isset($_GET['addInstrumentForm'])){
             Rating: <input type="number" name="Rating" max="100"/> <br>
             Weight: <input type="number" name="Weight"/> <br>
             Portable: <input type="radio" name="Portable" value="1" id="portY" required/> 
-                    <label for="genderF">Yes</label>
+                    <label for="portY">Yes</label>
                     <input type="radio" name="Portable" value="0" id="portN"  required/> 
-                    <label for="genderM">No</label><br>
+                    <label for="portN">No</label><br>
             Type:   <select name="Type">
                         <option value=""> Select One </option>
                         <option>Brass</option>
@@ -107,6 +107,8 @@ if (isset($_GET['addInstrumentForm'])){
         </form>
         
     </fieldset>
+    
+    
 
 
     </body>

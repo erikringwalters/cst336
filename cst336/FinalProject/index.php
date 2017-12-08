@@ -186,6 +186,10 @@ function displayInstruments(){
 <head>
     <title>Yea</title>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png"/>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 </head>
 <body>
     <h1>Music Shop</h1>
@@ -222,13 +226,17 @@ function displayInstruments(){
           
             
             
-             <div class="col-md-6" id="admin">
-    <a href="adminLogin.php">Admin login</a>
-    </div>
+     
+    <div class="col-md-6" id="info">
     <?php
     //getInstrumentInfo(1); 
     displayInstruments();
     ?>
+    </div>
+
+            <div class="col-md-6" id="admin"> 
+    <a href="adminLogin.php">Admin login</a> 
+    </div> <br>
    
 </body>
 </html>

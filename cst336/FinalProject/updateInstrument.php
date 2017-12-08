@@ -9,6 +9,7 @@ if (!isset($_SESSION['userName'])) { //validates that admin has indeed logged in
 
  include("../../dbConnection.php");
  $conn = getDatabaseConnection();
+ 
 
 function getDepartmentInfo(){
     global $conn;        
@@ -35,6 +36,13 @@ function getInstrumentInfo($Id) {
     return $record;
 }
 
+if (isset($_GET['Id'])) {
+    
+    $instrumentInfo = getInstrumentInfo($_GET['Id']);
+    //echo "Id: " . $instrumentInfo['Id'];
+    
+}
+
 if (isset($_GET['updateUserForm'])) { //admin has submitted form to update user
     global $conn;
     $sql = "UPDATE instrument
@@ -56,12 +64,7 @@ if (isset($_GET['updateUserForm'])) { //admin has submitted form to update user
 
 
 
-if (isset($_GET['Id'])) {
-    
-    $instrumentInfo = getInstrumentInfo($_GET['Id']);
-    
-    
-}
+
 
 
 
@@ -73,31 +76,33 @@ if (isset($_GET['Id'])) {
         <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <title> Admin: Updating User </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     </head>
     <body>
 
     <h1> Admin Section </h1>
     <h2> Updating User Info </h2>
 
-    <fieldset>
+    
         
         <legend> Update User </legend>
         
     
-         <form>
+        
+            <input type="hidden" id="Id" name="Id" value="<?=$instrumentInfo['Id']?>">
+            Name: <input id="Name" type="text" name="Name" value="<?=$instrumentInfo['Name']?>"required /> <br>
+            Brand: <input id="Brand" type="text" name="Brand" value="<?=$instrumentInfo['Brand']?>"required/> <br>
+            Description: <input id="Description" type="text" name="Description" value="<?=$instrumentInfo['Description']?>"required /> <br>
+            Price: <input id="Price" type="number" name="Price" value="<?=$instrumentInfo['Price']?>"required/> <br>
             
-            Name: <input type="text" name="Name" value="<?=$instrumentInfo['Name']?>"required /> <br>
-            Brand: <input type="text" name="Brand" value="<?=$instrumentInfo['Brand']?>"required/> <br>
-            Description: <input type="text" name="Description" value="<?=$instrumentInfo['Description']?>"required /> <br>
-            Price: <input type="number" name="Price" value="<?=$instrumentInfo['Price']?>"required/> <br>
-            
-            Rating: <input type="number" name="Rating" max="100"value="<?=$instrumentInfo['Rating']?>"/> <br>
-            Weight: <input type="number" name="Weight"value="<?=$instrumentInfo['Weight']?>"/> <br>
-            Portable: <input type="radio" name="Portable" value="1" id="portY" <?=($instrumentInfo['Portable']=='1')?"checked":"" ?> required/> 
+            Rating: <input id="Rating" type="number" name="Rating" max="100"value="<?=$instrumentInfo['Rating']?>"/> <br>
+            Weight: <input id="Weight" type="number" name="Weight"value="<?=$instrumentInfo['Weight']?>"/> <br>
+            Portable: <input id="Portable" type="radio" name="Portable" value="1" id="portY" <?=($instrumentInfo['Portable']=='1')?"checked":"" ?> required/> 
                     <label for="genderF">Yes</label>
                     <input type="radio" name="Portable" value="0" id="portN"  <?=($instrumentInfo['Portable']=='0')?"checked":"" ?> required/> 
                     <label for="genderM">No</label><br>
-            Type:   <select name="Type">
+            Type:   <select id="Type" name="Type">
                         <option value="<?=$instrumentInfo['Type']?>"> Select One </option>
                         <option>Brass</option>
                         <option>Percussion</option>
@@ -106,14 +111,49 @@ if (isset($_GET['Id'])) {
                         <option>Scientific</option>
                     </select>
             <br />
-           Isin (optional): <input type="text" name="Isin" value="<?=$instrumentInfo['Isin']?>"/> <br> 
+           Isin (optional): <input id="Isin" type="text" name="Isin" value="<?=$instrumentInfo['Isin']?>"/> <br> 
                         <br />
-                <input type="submit" name="updateInstrumentForm" value="Update Instrument!"/>
-        </form>
-        
-        
-    </fieldset>
+                <input id="updateButton" type="submit" name="updateInstrumentForm" value="Update Instrument!"/>
+       
+   
+<script>
+    function updateInfo(){
+        console.log($("#Id").val());
+        $.ajax({
+            type: "POST",
+            url: "updateInfo.php",
+            data: {
+                Id: $("#Id").val(),
+                Name: $("#Name").val(),
+                Type: $("#Type").val(),
+                Weight: $("#Weight").val(),
+                Brand: $("#Brand").val(),
+                Price: $("#Price").val(),
+                Rating: $("#Rating").val(),
+                Description: $("#Description").val(),
+                Isin: $("#Isin").val(),
+                Portable: $("#Portable").val()
+                
+            },
+            success: function() {
+                
+                window.location.href = "admin.php";
 
+            }
+        })
+        
+        
+    }
+    
+    
+    $(document).ready(function () {
+        
+   
+    $('#updateButton').click(function() {
+        updateInfo();
+    })
+    });
+</script>
 
     </body>
 </html>
