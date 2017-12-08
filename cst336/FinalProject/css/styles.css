@@ -1,7 +1,9 @@
 body{
     background-color: #f7c171 !important;
     text-align: center;
-    
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
 }
 table{
     text-align: center;
@@ -11,9 +13,21 @@ td, th {
     /*border: 1px solid #52aa69;*/
     text-align: left;
     margin-left: 50px;
-    padding: 8px;
+    height: 32px;
+    padding: 20px;
 }
 
 tr:nth-child(even) {
-    background-color: #cca64f;
+    background-color: #ffd97a;
+}
+table{
+    width: 80%;
+    margin-top: 50px
+}
+a{
+    padding: 10px;
+    color: white;
+}
+input{
+    margin-top: 10px;
 }

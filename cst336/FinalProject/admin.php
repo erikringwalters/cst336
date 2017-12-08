@@ -68,7 +68,10 @@ function getAverageRating()
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
         <title>Admin Page </title>
         <script>
@@ -85,7 +88,7 @@ function getAverageRating()
     </head>
     <body>
         
-<div class="col-md-1"></div>
+
         <h1> INSTRUMENT ADMIN PAGE </h1>
         <div class="col-md-1"></div>
         <h2> Welcome <?=$_SESSION['adminFullName']?>! </h2>
@@ -132,6 +135,7 @@ function getAverageRating()
     $totalRating = 0;
     global $totalInstruments;
     $totalInstruments = 0;
+    echo "<div class='col-md-6'>";
     foreach ($records as $record) {
         
         echo  $record['Id'] . " " . $record['Name'] . " " . $record['Brand'] . " " . $record['Weight']
@@ -150,11 +154,11 @@ function getAverageRating()
         foreach($instruments as $instrument) {
             
             echo    $instrument['Id'] .".) ". " <a  href='instrumentInfo.php?Id=".$instrument['Id']."'>"
-            . $instrument['Name'] . "  " . $instrument['Brand'] . "</a> |";
-            echo "[<a href='updateInstrument.php?Id=".$instrument['Id']."'> Update </a> ]";
+            . $instrument['Name'] . "  </a>" . $instrument['Brand'] . "   ";
+            echo "<a  class='btn btn-info' href='updateInstrument.php?Id=".$instrument['Id']."'> Update </a> ";
             //echo "[<a href='deleteUser.php?userId=".$instrument['userId']."'> Delete </a> ]";
             echo "<form action='deleteInstrument.php' style='display:inline' onsubmit='return confirmDelete(\"".$instrument['Name']."\")'>
-                     <input type='hidden' name='Id' value='".$instrument['Id']."' />
+                     <input class='btn btn-danger'type='hidden' name='Id' value='".$instrument['Id']."' />
                      <input type='submit' value='Delete'>
                   </form>
                 ";
@@ -162,7 +166,11 @@ function getAverageRating()
             echo "<br />";
             
         }
+echo "</div>";
 
+
+
+    echo "<div class='col-md-6'>";
             getAveragePrice();
             getTotalWeight();
             getAverageRating();
@@ -171,9 +179,9 @@ function getAverageRating()
             echo "<br> <p>Total weight: ". number_format($weightSum['SUM(Weight)'], 2) . "lb ";
             echo "<br> <p>Average rating: ". number_format($averageRating['AVG(Rating)'], 2) . "% ";
 
-
+echo "</div>";
+        
         ?>
-        </div>
         
         
         </div>
