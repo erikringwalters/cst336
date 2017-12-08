@@ -194,9 +194,9 @@ function displayInstruments(){
 <body>
     <h1>Music Shop</h1>
    
-    
+    <form>
     <!--<div id="filter" class="col-md-6">-->
-      Title: <input type="text" name="Name" placeholder="type here"/>
+      Name: <input type="text" name="Name" placeholder="type here"/>
             <br></br>
             Brand: 
             <select name="Brand">
@@ -224,7 +224,7 @@ function displayInstruments(){
           <input type="radio" name="asc" value="ASC" /> Ascending
           <input type="radio" name="asc" value="DESC"/> Descending<br />
           
-            
+        </form>    
             
      
     <div class="col-md-6" id="info">

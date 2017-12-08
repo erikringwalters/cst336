@@ -28,6 +28,42 @@ function getInstrumentInfo($Id)
     $statement->execute();
     $instruments = $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+function getAveragePrice()
+{
+    global $conn;
+    $sql = "SELECT AVG(Price)
+            FROM instrument";
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+    global $average;
+    $average = $statement->fetch(PDO::FETCH_ASSOC);
+    
+   // print_r($average);
+}
+function getTotalWeight()
+{
+    global $conn;
+    $sql = "SELECT SUM(Weight)
+            FROM instrument";
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+    global $weightSum;
+    $weightSum = $statement->fetch(PDO::FETCH_ASSOC);
+    
+   // print_r($average);
+}
+function getAverageRating()
+{
+    global $conn;
+    $sql = "SELECT AVG(Rating)
+            FROM instrument";
+    $statement = $conn->prepare($sql);
+    $statement->execute();
+    global $averageRating;
+    $averageRating = $statement->fetch(PDO::FETCH_ASSOC);
+    
+   // print_r($average);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -126,9 +162,16 @@ function getInstrumentInfo($Id)
             echo "<br />";
             
         }
-        echo $totalRating . "    " . $totalInstruments;
-        $avgRating = $totalRating/$totalInstruments;
-        echo "<h4> Average Rating: ". $avgRating . " </h4>"
+
+            getAveragePrice();
+            getTotalWeight();
+            getAverageRating();
+            echo "<h4>Aggregate Info<h4> <br>";
+            echo "<br> <p>Average price: $". number_format($average['AVG(Price)'], 2) . " ";
+            echo "<br> <p>Total weight: ". number_format($weightSum['SUM(Weight)'], 2) . "lb ";
+            echo "<br> <p>Average rating: ". number_format($averageRating['AVG(Rating)'], 2) . "% ";
+
+
         ?>
         </div>
         
