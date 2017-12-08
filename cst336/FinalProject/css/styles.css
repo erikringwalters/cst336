@@ -3,3 +3,13 @@ body{
     text-align: center;
     
 }
+td, th {
+    /*border: 1px solid #52aa69;*/
+    text-align: left;
+    margin-left: 50px;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #cca64f;
+}

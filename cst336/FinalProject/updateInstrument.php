@@ -93,9 +93,9 @@ if (isset($_GET['Id'])) {
             
             Rating: <input type="number" name="Rating" max="100"value="<?=$instrumentInfo['Rating']?>"/> <br>
             Weight: <input type="number" name="Weight"value="<?=$instrumentInfo['Weight']?>"/> <br>
-            Portable: <input type="radio" name="Portable" value="1" id="portY" required/> 
+            Portable: <input type="radio" name="Portable" value="1" id="portY" <?=($instrumentInfo['Portable']=='1')?"checked":"" ?> required/> 
                     <label for="genderF">Yes</label>
-                    <input type="radio" name="Portable" value="0" id="portN"  required/> 
+                    <input type="radio" name="Portable" value="0" id="portN"  <?=($instrumentInfo['Portable']=='0')?"checked":"" ?> required/> 
                     <label for="genderM">No</label><br>
             Type:   <select name="Type">
                         <option value="<?=$instrumentInfo['Type']?>"> Select One </option>
@@ -108,7 +108,7 @@ if (isset($_GET['Id'])) {
             <br />
            Isin (optional): <input type="text" name="Isin" value="<?=$instrumentInfo['Isin']?>"/> <br> 
                         <br />
-                <input type="submit" name="addInstrumentForm" value="Add Instrument!"/>
+                <input type="submit" name="updateInstrumentForm" value="Update Instrument!"/>
         </form>
         
         

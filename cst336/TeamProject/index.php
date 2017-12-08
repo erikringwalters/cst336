@@ -143,6 +143,8 @@ function displayMovies(){
 }
 
 ?>
+
+
 </table>
 <!DOCTYPE html>
 <html>

@@ -1,3 +1,4 @@
+
 <?php
 
 include '../../dbConnection.php';
@@ -24,9 +25,9 @@ function getInstrumentName()
 function getInstrumentBrand() 
 {
     global $conn;
-    $sql = "SELECT Brand
-            FROM `instrument` 
-            ORDER BY Brand";
+    $sql = "SELECT Name
+            FROM `brand` 
+            ORDER BY Name";
     
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -48,8 +49,24 @@ function getInstrumentInfo($Id)
     $users = $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getInstrumentType() 
+{
+    global $conn;
+    $sql = "SELECT Name
+            FROM `type` 
+            ORDER BY Name";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach ($records as $record) 
+    {
+        echo "<option> "  . $record['Name'] . "</option>";
+    }
+}
 
-        function displayInstrumentInformation() {
+function displayInstrumentInformation() {
     
     include '../../dbConnection.php';
     $conn = getDatabaseConnection();
@@ -74,6 +91,7 @@ function getInstrumentInfo($Id)
     }
     
 }
+
 function displayInstruments(){
     global $conn;
     
@@ -83,7 +101,7 @@ function displayInstruments(){
     if (isset($_GET['submit']))
         {
         $namedParameters = array();
-        }
+        
     if (!empty($_GET['Name'])) 
         {
   
@@ -107,7 +125,7 @@ function displayInstruments(){
               
     if (!empty($_GET['Rating'])) 
         {
-            $sql .= " AND Rating = :Rating"; 
+            $sql .= " AND Rating LIKE :Rating"; 
             $namedParameters[':Rating'] =   $_GET['Rating'] ;
         }  
     
@@ -115,8 +133,7 @@ function displayInstruments(){
         {
          
             $sql .= " AND Type LIKE :Type"; 
-            $namedParameters[':Price'] = "$" . $_GET['
-           Price'] . "%";
+            $namedParameters[':Price'] = "$" . $_GET['Price'];
         } 
          
     if(!empty($_GET['asc']))
@@ -124,7 +141,9 @@ function displayInstruments(){
              $sql .= "  ORDER BY Name" . " " . $_GET['asc'];
            
         }
-          $stmt = $conn->prepare($sql);
+    }
+ 
+    $stmt = $conn->prepare($sql);
     $stmt->execute($namedParameters);
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
@@ -145,23 +164,24 @@ function displayInstruments(){
         echo "<tr>".
         "<td>" . "<a href='instrumentInfo.php?Id=" . $url . "''>" . $record['Name'] . "</a></td>".
         "<td> " .  $record['Brand']. "</td>". 
-        "<td> ". $record['Type'] . "</td>" .
+        "<td> " . $record['Type'] . "</td>" .
         "<td> $" . $record['Price'] . "</td>".
-        "<td> <a target='shoppingcart' href='shoppingcart.php?movieId=".$record['Id']."'> [Add to Cart] </a> <br /> </td>".
+        "<td> " . $record['Rating'] . "</td>".
         "</tr>";
         
     }
-
-    } 
+} 
         
     
   
 
 ?>
+
+
 </table>
 
 
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Yea</title>
@@ -169,11 +189,46 @@ function displayInstruments(){
 </head>
 <body>
     <h1>Music Shop</h1>
-    <a href="admin.php">Admin login</a>
+   
+    
+    <!--<div id="filter" class="col-md-6">-->
+      Title: <input type="text" name="Name" placeholder="type here"/>
+            <br></br>
+            Brand: 
+            <select name="Brand">
+                <option value="">Select One</option>
+                <?=getInstrumentBrand()?>
+            </select>
+            <br></br>
+            
+                 Type: 
+            <select name="Type">
+                <option value="">Select One</option>
+                <?=getInstrumentType()?>
+            </select>
+            <br></br>
+               Rating (%): 
+            <input id="rating" type="number" name="Rating"/>
+               
+            </select>
+            
+             <br></br>
+             
+              <br></br>
+            <input type="submit" value="Search for an Instrument!" name="submit" >
+                 Sort by:
+          <input type="radio" name="asc" value="ASC" /> Ascending
+          <input type="radio" name="asc" value="DESC"/> Descending<br />
+          
+            
+            
+             <div class="col-md-6" id="admin">
+    <a href="adminLogin.php">Admin login</a>
+    </div>
     <?php
-    getInstrumentInfo(1); 
+    //getInstrumentInfo(1); 
     displayInstruments();
     ?>
-    
+   
 </body>
 </html>
